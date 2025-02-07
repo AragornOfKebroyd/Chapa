@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyobf2k1334ph"]
+
+[ext_resource type="Texture2D" uid="uid://42e7fiaxqui1" path="res://assets/log.png" id="1_emwcu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7rbtu"]
+size = Vector2(52, 11)
+
+[node name="Fallen Tree" type="StaticBody2D"]
+scale = Vector2(5, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_emwcu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_7rbtu")
