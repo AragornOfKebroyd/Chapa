@@ -33,9 +33,9 @@ func update_wave():
 	for p in points:
 		line.add_point(p)
 
-func process_wave(delta, radius):
+func process_wave(delta, rad):
 	
-	var perc_dist = radius / max_radius
+	var perc_dist = rad / max_radius
 	
 	opacity = (1-perc_dist)**2
 	
@@ -51,7 +51,7 @@ func process_wave(delta, radius):
 		
 		if result:
 			# Bounce the point if it hits something
-			var normal = result.normal
+			#var normal = result.normal
 			
 			# Bounce
 			#velocities[i] = velocities[i].bounce(normal)
@@ -67,8 +67,8 @@ func _ready():
 	create_wave()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+#func _process(delta):
+	#pass
 
 var opacity = 1
 func _physics_process(delta):
