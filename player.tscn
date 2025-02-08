@@ -167,5 +167,4 @@ color = Color(0, 0, 0, 1)
 
 [node name="Wave" parent="." instance=ExtResource("2_2b214")]
 visible = false
-z_index = 2
 position = Vector2(-1.33333, 1.33333)

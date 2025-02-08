@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtw31v5fk0tx1"
-path="res://.godot/imported/Badger.png-a3c1257a25b6f1c6533a0a957afa1f90.ctex"
+uid="uid://c6nm5788uwmer"
+path="res://.godot/imported/real_tileset.png-0e09a637d15b2a49d75c6dee4dca3203.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Badger.png"
-dest_files=["res://.godot/imported/Badger.png-a3c1257a25b6f1c6533a0a957afa1f90.ctex"]
+source_file="res://RealArtAssets/real_tileset.png"
+dest_files=["res://.godot/imported/real_tileset.png-0e09a637d15b2a49d75c6dee4dca3203.ctex"]
 
 [params]
 
