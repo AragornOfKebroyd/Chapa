@@ -1,10 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://dky68bmkhriig"]
+[gd_scene load_steps=25 format=3 uid="uid://dky68bmkhriig"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_oa4ou"]
-[ext_resource type="Texture2D" uid="uid://cospybca1rg3m" path="res://icon.svg" id="1_v7pci"]
 [ext_resource type="PackedScene" uid="uid://cxk4pd3p18hht" path="res://sound_wave.tscn" id="2_2b214"]
-[ext_resource type="Texture2D" uid="uid://danwn8322jx4x" path="res://RealArtAssets/idle.png" id="4_b35kv"]
-[ext_resource type="Texture2D" uid="uid://de48vsxrf5ik1" path="res://RealArtAssets/run.png" id="5_dr4c6"]
+[ext_resource type="Texture2D" uid="uid://danwn8322jx4x" path="res://RealArtAssets/Animations/idle.png" id="4_b35kv"]
+[ext_resource type="Texture2D" uid="uid://de48vsxrf5ik1" path="res://RealArtAssets/Animations/run.png" id="5_dr4c6"]
 [ext_resource type="PackedScene" uid="uid://04cxlcpteuu6" path="res://blackout.tscn" id="6_bybos"]
 [ext_resource type="Shader" path="res://shaders/blackout.gdshader" id="7_6byx3"]
 
@@ -139,10 +138,6 @@ shader_parameter/screen_size = null
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_oa4ou")
 wave_scene = ExtResource("2_2b214")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("1_v7pci")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4.66667, 6)

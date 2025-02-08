@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://danwn8322jx4x"
-path="res://.godot/imported/idle.png-ce24d78d9d40ab1c8919602aacf4a340.ctex"
+uid="uid://c3mqsgewch5gj"
+path="res://.godot/imported/rock2.png-31b4a5b6ea07770a3d6247b6b4c991aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://RealArtAssets/idle.png"
-dest_files=["res://.godot/imported/idle.png-ce24d78d9d40ab1c8919602aacf4a340.ctex"]
+source_file="res://RealArtAssets/Obstacles/rock2.png"
+dest_files=["res://.godot/imported/rock2.png-31b4a5b6ea07770a3d6247b6b4c991aa.ctex"]
 
 [params]
 

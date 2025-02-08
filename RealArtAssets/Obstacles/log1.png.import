@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cebavfkxohf3n"
-path="res://.godot/imported/real_tileset.png-0e09a637d15b2a49d75c6dee4dca3203.ctex"
+uid="uid://dvbs6m7dmpvek"
+path="res://.godot/imported/log1.png-c7e19b9b463936717644199314187323.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://RealArtAssets/real_tileset.png"
-dest_files=["res://.godot/imported/real_tileset.png-0e09a637d15b2a49d75c6dee4dca3203.ctex"]
+source_file="res://RealArtAssets/Obstacles/log1.png"
+dest_files=["res://.godot/imported/log1.png-c7e19b9b463936717644199314187323.ctex"]
 
 [params]
 

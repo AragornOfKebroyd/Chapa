@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfn6erwivdvba"]
+
+[ext_resource type="Texture2D" uid="uid://c7nnn45fujctq" path="res://RealArtAssets/Obstacles/bush1.png" id="1_fwibp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o40m5"]
+size = Vector2(15.8, 15.2)
+
+[node name="Log" type="StaticBody2D"]
+scale = Vector2(5, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.2, -1.50463e-36)
+texture = ExtResource("1_fwibp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1.2)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_o40m5")

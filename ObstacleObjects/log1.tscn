@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b41vwujrqjvtn"]
+
+[ext_resource type="Texture2D" uid="uid://dvbs6m7dmpvek" path="res://RealArtAssets/Obstacles/log1.png" id="1_6rseq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o40m5"]
+size = Vector2(47.2, 15)
+
+[node name="Log" type="StaticBody2D"]
+scale = Vector2(5, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.199999, -2)
+texture = ExtResource("1_6rseq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.400001, -1.5)
+shape = SubResource("RectangleShape2D_o40m5")

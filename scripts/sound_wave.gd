@@ -33,9 +33,9 @@ func update_wave():
 	for p in points:
 		line.add_point(p)
 
-func process_wave(delta, radius):
+func process_wave(delta, rad):
 	
-	var perc_dist = radius / max_radius
+	var perc_dist = rad / max_radius
 	
 	opacity = (1-perc_dist)**2
 	
@@ -51,7 +51,7 @@ func process_wave(delta, radius):
 		
 		if result:
 			# Bounce the point if it hits something
-			var normal = result.normal
+			#var normal = result.normal
 			
 			# Bounce
 			#velocities[i] = velocities[i].bounce(normal)
@@ -63,47 +63,22 @@ func process_wave(delta, radius):
 	update_wave()
 	
 	
-
-func draw_wave(r):
-	
-	var perc_dist = radius / max_radius
-	
-	opacity = (1-perc_dist)**2
-	
-	
-	modulate.a = opacity
-	
-	# make line2d a circle
-	var line = $Line2D
-	line.clear_points()
-	
-	for i in range(segments + 1):  # +1 to close the loop
-		var angle = i * TAU / segments  # TAU = 2 * PI
-		var direction =  Vector2(cos(angle), sin(angle))
-		var point = direction * r
-		line.add_point(point)
-
 func _ready():
 	create_wave()
-	pass
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+#func _process(delta):
+	#pass
 
 var opacity = 1
 func _physics_process(delta):
 	radius += wave_speed * delta
-	#draw_wave(radius)
-	#$Area2D/CollisionShape2D.shape.radius = radius
 	
 	process_wave(delta, radius)
 	
 	if radius > max_radius:
 		queue_free()
 	
-
 func _on_Area2D_area_entered(area):
 	if area.has_method("on_wave_hit"):
 		area.on_wave_hit(global_position)

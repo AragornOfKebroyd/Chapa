@@ -7,7 +7,6 @@ signal hit
 var screen_size
 
 # blackout screen
-#@onready var blackout_rect = get_parent().get_node("Blackout")
 @onready var blackout_rect = $Blackout
 
 func _ready():
@@ -15,7 +14,7 @@ func _ready():
 
 @onready var anim_sprite = $AnimatedSprite2D  # Reference to the AnimatedSprite2D node
 
-func _process(delta: float):
+func _process(_delta: float):
 	# set animation
 	if velocity.length() > 0:
 		anim_sprite.play("run")
@@ -29,12 +28,12 @@ func _process(delta: float):
 	
 	
 	if blackout_rect:
-		var material = blackout_rect.material
-		if material is ShaderMaterial:
+		var mat = blackout_rect.material
+		if mat is ShaderMaterial:
 			var centre_pos = get_viewport().get_camera_2d().get_screen_center_position() - (screen_size / 2)
-			material.set_shader_parameter("player_pos", global_position - centre_pos)
-			material.set_shader_parameter("light_radius", 80.0) # Adjust radius
-			material.set_shader_parameter("screen_size", get_viewport_rect().size) # Pass screen size
+			mat.set_shader_parameter("player_pos", global_position - centre_pos)
+			mat.set_shader_parameter("light_radius", 80.0) # Adjust radius
+			mat.set_shader_parameter("screen_size", get_viewport_rect().size) # Pass screen size
 		
 const mu = 0.2
 const THRESHHOLD = 7
@@ -89,7 +88,6 @@ func process_movement(delta):
 	# ma = Fres
 	var resistance = -sign(velocity) * mu * velocity * velocity
 	var acceleration = force + resistance
-	#print("force: ", force, "\nresistance", resistance, "\nacceleration: ", acceleration,"\nvelocity: ",velocity)
 	
 	#if sign(velocity + acceleration * delta) == sign(velocity) or velocity == Vector2.ZERO:
 	velocity += acceleration * delta

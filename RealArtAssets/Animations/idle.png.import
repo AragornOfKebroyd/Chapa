@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cebavfkxohf3n"
-path="res://.godot/imported/real_tileset.png-0e09a637d15b2a49d75c6dee4dca3203.ctex"
+uid="uid://danwn8322jx4x"
+path="res://.godot/imported/idle.png-f8ccee2f1ded11a1fb6d7b40108edd0d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://RealArtAssets/real_tileset.png"
-dest_files=["res://.godot/imported/real_tileset.png-0e09a637d15b2a49d75c6dee4dca3203.ctex"]
+source_file="res://RealArtAssets/Animations/idle.png"
+dest_files=["res://.godot/imported/idle.png-f8ccee2f1ded11a1fb6d7b40108edd0d.ctex"]
 
 [params]
 
