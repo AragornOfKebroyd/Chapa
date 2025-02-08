@@ -6,6 +6,7 @@
 radius = 82.85
 
 [node name="Sound Wave" type="Node2D"]
+z_index = 2
 script = ExtResource("1_exlhb")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -14,6 +15,7 @@ script = ExtResource("1_exlhb")
 shape = SubResource("CircleShape2D_v158j")
 
 [node name="Line2D" type="Line2D" parent="."]
+z_index = 2
 position = Vector2(0, 1)
 width = 3.0
 joint_mode = 2
