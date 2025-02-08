@@ -1,5 +1,19 @@
-[gd_scene format=3 uid="uid://04cxlcpteuu6"]
+[gd_scene load_steps=3 format=3 uid="uid://04cxlcpteuu6"]
+
+[ext_resource type="Shader" path="res://shaders/blackout.gdshader" id="1_1ao7m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xatuu"]
+shader = ExtResource("1_1ao7m")
+shader_parameter/player_pos = null
+shader_parameter/light_radius = 100.0
+shader_parameter/screen_size = null
 
 [node name="Blackout" type="ColorRect"]
+material = SubResource("ShaderMaterial_xatuu")
 custom_minimum_size = Vector2(1920, 1080)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.0687983, 0.0687983, 0.0687983, 1)
