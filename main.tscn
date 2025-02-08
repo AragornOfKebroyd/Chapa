@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://diu0ttrbt7elw"]
+[gd_scene load_steps=9 format=3 uid="uid://diu0ttrbt7elw"]
 
 [ext_resource type="PackedScene" uid="uid://cu8n2gudtbpw0" path="res://real_tile_map.tscn" id="1_ka215"]
 [ext_resource type="PackedScene" uid="uid://dky68bmkhriig" path="res://player.tscn" id="1_nfi0n"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cusswafy60ou1" path="res://ObstacleObjects/log2.tscn" id="5_ylc3q"]
 [ext_resource type="PackedScene" uid="uid://ceu6kpb6c54xg" path="res://ObstacleObjects/tree1.tscn" id="6_l6mbu"]
 [ext_resource type="PackedScene" uid="uid://dcy8gbee24n3x" path="res://ObstacleObjects/rock1.tscn" id="7_al3rd"]
+[ext_resource type="PackedScene" uid="uid://37rpkb3r2n74" path="res://Berries/PinkBerry.tscn" id="8_8xqwg"]
 [ext_resource type="PackedScene" uid="uid://dxutpspyb6krb" path="res://ObstacleObjects/rock2.tscn" id="8_m2shj"]
 
 [node name="Node" type="Node"]
@@ -49,3 +50,8 @@ position = Vector2(188, -249)
 
 [node name="Log5" parent="Objects" instance=ExtResource("6_l6mbu")]
 position = Vector2(88, -225)
+
+[node name="PinkBerry" parent="Objects" instance=ExtResource("8_8xqwg")]
+position = Vector2(717, -139)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
