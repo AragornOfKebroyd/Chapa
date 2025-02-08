@@ -10,9 +10,8 @@ var offset = 0;
 # on collision: stops process, is_straying = true, follow_sound
 # once reached sound coordinate: wait 1 sec, is_straying = false, resume path
 
-func _on_area_2d_area_entered(area):
-	print("collision")
-
+func _on_object_detected_badger(sound_position):
+	print("signal recieved from position",sound_position)
 
 # Collides with sound wave
 #func _on_Area2D_body_entered(area):
@@ -23,11 +22,8 @@ func _on_area_2d_area_entered(area):
 		#set_process(true)
 
 
-
-
-
 func _ready() -> void:
-	pass
+	event_bus.badger_detected.connect(_on_object_detected_badger)
 
 
 # Called every frame
