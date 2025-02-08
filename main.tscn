@@ -1,34 +1,47 @@
-[gd_scene load_steps=4 format=3 uid="uid://diu0ttrbt7elw"]
+[gd_scene load_steps=8 format=3 uid="uid://diu0ttrbt7elw"]
 
+[ext_resource type="PackedScene" uid="uid://261jv3nvbic3" path="res://real_tile_map.tscn" id="1_ka215"]
 [ext_resource type="PackedScene" uid="uid://dky68bmkhriig" path="res://player.tscn" id="1_nfi0n"]
-[ext_resource type="PackedScene" uid="uid://dyobf2k1334ph" path="res://fallen-tree-wall.tscn" id="2_dudaw"]
-[ext_resource type="PackedScene" uid="uid://bd1pgkj36t4jj" path="res://ball.tscn" id="3_ays8w"]
+[ext_resource type="PackedScene" uid="uid://b41vwujrqjvtn" path="res://ObstacleObjects/log1.tscn" id="4_6gmd4"]
+[ext_resource type="PackedScene" uid="uid://cusswafy60ou1" path="res://ObstacleObjects/log2.tscn" id="5_ylc3q"]
+[ext_resource type="PackedScene" uid="uid://ceu6kpb6c54xg" path="res://ObstacleObjects/tree1.tscn" id="6_l6mbu"]
+[ext_resource type="PackedScene" uid="uid://dcy8gbee24n3x" path="res://ObstacleObjects/rock1.tscn" id="7_al3rd"]
+[ext_resource type="PackedScene" uid="uid://dxutpspyb6krb" path="res://ObstacleObjects/rock2.tscn" id="8_m2shj"]
 
 [node name="Node" type="Node"]
 
+[node name="RealTileMap" parent="." instance=ExtResource("1_ka215")]
+position = Vector2(-33, 108)
+scale = Vector2(5, 5)
+rendering_quadrant_size = 15
+
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_nfi0n")]
-position = Vector2(-6, -11)
+position = Vector2(-5, -10)
 scale = Vector2(0.745686, 0.75)
 motion_mode = 1
 wall_min_slide_angle = 0.677188
 
-[node name="Fallen Tree" parent="." instance=ExtResource("2_dudaw")]
-position = Vector2(269, 97)
-rotation = -0.345575
+[node name="Log" parent="." instance=ExtResource("4_6gmd4")]
+position = Vector2(-105, 396)
 
-[node name="Fallen Tree2" parent="." instance=ExtResource("2_dudaw")]
-position = Vector2(-303, 68)
-rotation = 0.50091
+[node name="Log2" parent="." instance=ExtResource("5_ylc3q")]
+position = Vector2(126, 321)
+rotation = -0.698132
 
-[node name="Ball" parent="." instance=ExtResource("3_ays8w")]
-visible = false
-position = Vector2(63, -173)
-gravity_scale = 8.0
+[node name="Tree" parent="." instance=ExtResource("6_l6mbu")]
+position = Vector2(-398, 406)
 
-[node name="Fallen Tree3" parent="." instance=ExtResource("2_dudaw")]
-position = Vector2(242, -291)
-rotation = -2.26195
+[node name="Rock" parent="." instance=ExtResource("7_al3rd")]
+position = Vector2(-330, 162)
 
-[node name="Fallen Tree4" parent="." instance=ExtResource("2_dudaw")]
-position = Vector2(-121, -257)
-rotation = -5.21155
+[node name="Rock2" parent="." instance=ExtResource("8_m2shj")]
+position = Vector2(-401, 253)
+
+[node name="Log3" parent="." instance=ExtResource("4_6gmd4")]
+position = Vector2(493, -167)
+
+[node name="Log4" parent="." instance=ExtResource("7_al3rd")]
+position = Vector2(188, -249)
+
+[node name="Log5" parent="." instance=ExtResource("6_l6mbu")]
+position = Vector2(88, -225)
