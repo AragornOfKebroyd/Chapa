@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://diu0ttrbt7elw"]
+[gd_scene load_steps=4 format=3 uid="uid://diu0ttrbt7elw"]
 
 [ext_resource type="PackedScene" uid="uid://dky68bmkhriig" path="res://player.tscn" id="1_nfi0n"]
 [ext_resource type="PackedScene" uid="uid://dyobf2k1334ph" path="res://fallen-tree-wall.tscn" id="2_dudaw"]
 [ext_resource type="PackedScene" uid="uid://bd1pgkj36t4jj" path="res://ball.tscn" id="3_ays8w"]
-[ext_resource type="PackedScene" uid="uid://cc2s03gf2j5og" path="res://tile_map.tscn" id="4_1ynyl"]
 
 [node name="Node" type="Node"]
 
@@ -14,11 +13,11 @@ motion_mode = 1
 wall_min_slide_angle = 0.677188
 
 [node name="Fallen Tree" parent="." instance=ExtResource("2_dudaw")]
-position = Vector2(320, 185)
-rotation = -0.869174
+position = Vector2(269, 97)
+rotation = -0.345575
 
 [node name="Fallen Tree2" parent="." instance=ExtResource("2_dudaw")]
-position = Vector2(-490, 169)
+position = Vector2(-303, 68)
 rotation = 0.50091
 
 [node name="Ball" parent="." instance=ExtResource("3_ays8w")]
@@ -27,14 +26,9 @@ position = Vector2(63, -173)
 gravity_scale = 8.0
 
 [node name="Fallen Tree3" parent="." instance=ExtResource("2_dudaw")]
-position = Vector2(370, -247)
-rotation = -1.71042
+position = Vector2(242, -291)
+rotation = -2.26195
 
 [node name="Fallen Tree4" parent="." instance=ExtResource("2_dudaw")]
-position = Vector2(-235, -242)
+position = Vector2(-121, -257)
 rotation = -5.21155
-
-[node name="TileMap" parent="." instance=ExtResource("4_1ynyl")]
-z_index = -1
-position = Vector2(-197, -95)
-scale = Vector2(6, 6)
