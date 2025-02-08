@@ -4,14 +4,10 @@ signal collision
 signal hit
 
 @export var SPEED = 240.0
-const JUMP_VELOCITY = -400.0
 var screen_size
 
 func _ready():
 	screen_size = get_viewport_rect().size
-
-
-
 
 func _process(delta: float):
 	# set animation
@@ -26,6 +22,21 @@ const ONE_OVER_ROOT_TWO = 0.70710678118
 var fMult = SPEED * SPEED * mu
 
 func _physics_process(delta: float) -> void:
+	process_movement(delta)
+	
+	process_squeak()
+
+
+@export var wave_scene: PackedScene  # Drag the Wave scene into the inspector
+
+func process_squeak():
+	if Input.is_action_just_pressed("squeak"):
+		print("squeak")
+		var wave = wave_scene.instantiate()
+		wave.global_position = global_position
+		get_parent().add_child(wave)
+
+func process_movement(delta):
 	#velocity = Vector2.ZERO
 	var force = Vector2.ZERO
 	
@@ -66,3 +77,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y = 0
 	
 	position += velocity * delta
+
+
+

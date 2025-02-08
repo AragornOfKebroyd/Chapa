@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxk4pd3p18hht"]
+
+[ext_resource type="Script" path="res://scripts/sound_wave.gd" id="1_exlhb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v158j"]
+radius = 82.85
+
+[node name="Sound Wave" type="Node2D"]
+script = ExtResource("1_exlhb")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_v158j")
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(0, 1)
+points = PackedVector2Array(83, 0, 59, -59, -1, -82, -58, -60, -82, 0, -60, 57, -1, 82, 56, 60)
+closed = true
+width = 3.0
+joint_mode = 2
+begin_cap_mode = 2

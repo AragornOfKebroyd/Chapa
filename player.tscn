@@ -1,13 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://dky68bmkhriig"]
+[gd_scene load_steps=5 format=3 uid="uid://dky68bmkhriig"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_oa4ou"]
 [ext_resource type="Texture2D" uid="uid://cospybca1rg3m" path="res://icon.svg" id="1_v7pci"]
+[ext_resource type="PackedScene" uid="uid://cxk4pd3p18hht" path="res://sound_wave.tscn" id="2_2b214"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t1m4y"]
 size = Vector2(115, 113)
 
 [node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.75, 0.75)
 script = ExtResource("1_oa4ou")
+wave_scene = ExtResource("2_2b214")
+
+[node name="Node2D" parent="." instance=ExtResource("2_2b214")]
+visible = false
+position = Vector2(-1.33333, 1.33333)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_v7pci")
