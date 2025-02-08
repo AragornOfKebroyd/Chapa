@@ -8,15 +8,27 @@
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_nfi0n")]
 position = Vector2(-6, -11)
+motion_mode = 1
+wall_min_slide_angle = 0.677188
 
 [node name="Fallen Tree" parent="." instance=ExtResource("2_dudaw")]
-position = Vector2(110, 108)
+position = Vector2(269, 97)
 rotation = -0.345575
 
+[node name="Fallen Tree2" parent="." instance=ExtResource("2_dudaw")]
+position = Vector2(-303, 68)
+rotation = 0.50091
+
 [node name="Ball" parent="." instance=ExtResource("3_ays8w")]
-position = Vector2(31, -175)
+visible = false
+position = Vector2(63, -173)
+scale = Vector2(1, 1)
 gravity_scale = 8.0
 
-[node name="Fallen Tree2" parent="." instance=ExtResource("2_dudaw")]
-position = Vector2(-130, 97)
-rotation = 0.50091
+[node name="Fallen Tree3" parent="." instance=ExtResource("2_dudaw")]
+position = Vector2(242, -291)
+rotation = -2.26195
+
+[node name="Fallen Tree4" parent="." instance=ExtResource("2_dudaw")]
+position = Vector2(-121, -257)
+rotation = -5.21155

@@ -28,13 +28,18 @@ func _physics_process(delta: float) -> void:
 
 
 @export var wave_scene: PackedScene  # Drag the Wave scene into the inspector
-
+@export var sqeak_cooldown = 0.5
+var can_sqeak = true
 func process_squeak():
-	if Input.is_action_just_pressed("squeak"):
+	if Input.is_action_just_pressed("squeak") and can_sqeak:
 		print("squeak")
 		var wave = wave_scene.instantiate()
 		wave.global_position = global_position
 		get_parent().add_child(wave)
+		
+		can_sqeak = false
+		get_tree().create_timer(sqeak_cooldown).timeout.connect(func(): can_sqeak = true)
+		
 
 func process_movement(delta):
 	#velocity = Vector2.ZERO
@@ -76,7 +81,8 @@ func process_movement(delta):
 	if abs(velocity.y) < THRESHHOLD and sign(velocity) != sign(acceleration):
 		velocity.y = 0
 	
-	position += velocity * delta
+	# update position with collision
+	move_and_slide()
 
 
 

@@ -6,8 +6,51 @@ var radius = 5
 # Called when the node enters the scene tree for the first time.
 
 @export var start_radius: float = 50.0  # Initial radius of the circle
-@export var segments: int = 64  # Number of points in the circle
+@export var segments: int = 256  # Number of points in the circle
 
+
+var points: Array
+var velocities: Array
+
+func create_wave():
+	points.clear()
+	velocities.clear()
+	
+	for i in range(segments + 1):
+		var angle = i * TAU / segments
+		var direction =  Vector2(cos(angle), sin(angle))
+		var start_position = direction * start_radius
+		
+		points.append(start_position)
+		velocities.append(direction * wave_speed)
+	
+	update_wave()
+
+func update_wave():
+	var line = $Line2D
+	line.clear_points()
+	
+	for p in points:
+		line.add_point(p)
+
+func process_wave(delta):
+	for i in range(segments+1):
+		var new_pos = points[i] + velocities[i] * delta
+		
+		# check for collision
+		var space_state = get_world_2d().direct_space_state
+		var query = PhysicsRayQueryParameters2D.create(points[i] + global_position, new_pos + global_position)
+		var result = space_state.intersect_ray(query)
+		
+		if result:
+			# Bounce the point if it hits something
+			var normal = result.normal
+			velocities[i] = velocities[i].bounce(normal)
+		
+		points[i] = new_pos  # Update position
+	update_wave()
+	
+	
 
 func draw_wave(r):
 	
@@ -24,10 +67,12 @@ func draw_wave(r):
 	
 	for i in range(segments + 1):  # +1 to close the loop
 		var angle = i * TAU / segments  # TAU = 2 * PI
-		var point = Vector2(cos(angle), sin(angle)) * r
+		var direction =  Vector2(cos(angle), sin(angle))
+		var point = direction * r
 		line.add_point(point)
 
 func _ready():
+	#create_wave()
 	pass
 
 
@@ -41,7 +86,7 @@ func _physics_process(delta):
 	draw_wave(radius)
 	$Area2D/CollisionShape2D.shape.radius = radius
 	
-	
+	#process_wave(delta)
 	
 	if radius > max_radius:
 		queue_free()
