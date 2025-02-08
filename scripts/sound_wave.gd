@@ -1,11 +1,11 @@
 extends Node2D
-@export var wave_speed: float = 400.0  # Speed of expansion
-@export var max_radius: float = 500.0  # Maximum expansion size
+@export var wave_speed: float = 500.0  # Speed of expansion
+@export var max_radius: float = 700.0  # Maximum expansion size
 
 var radius = 5
 # Called when the node enters the scene tree for the first time.
 
-@export var start_radius: float = 50.0  # Initial radius of the circle
+@export var start_radius: float = 5.0  # Initial radius of the circle
 @export var segments: int = 512  # Number of points in the circle
 
 
@@ -37,7 +37,7 @@ func process_wave(delta, radius):
 	
 	var perc_dist = radius / max_radius
 	
-	opacity = 1 * (1-perc_dist)**2
+	opacity = (1-perc_dist)**2
 	
 	modulate.a = opacity
 	
@@ -68,7 +68,7 @@ func draw_wave(r):
 	
 	var perc_dist = radius / max_radius
 	
-	opacity = 1 * (1-perc_dist)**2
+	opacity = (1-perc_dist)**2
 	
 	
 	modulate.a = opacity

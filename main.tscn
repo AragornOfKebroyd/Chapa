@@ -8,16 +8,16 @@
 [node name="Node" type="Node"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_nfi0n")]
-position = Vector2(-6, -11)
-scale = Vector2(0.745686, 0.75)
 motion_mode = 1
 wall_min_slide_angle = 0.677188
 
 [node name="Fallen Tree" parent="." instance=ExtResource("2_dudaw")]
+z_index = -1
 position = Vector2(320, 185)
 rotation = -0.869174
 
 [node name="Fallen Tree2" parent="." instance=ExtResource("2_dudaw")]
+z_index = -1
 position = Vector2(-490, 169)
 rotation = 0.50091
 
@@ -27,10 +27,12 @@ position = Vector2(63, -173)
 gravity_scale = 8.0
 
 [node name="Fallen Tree3" parent="." instance=ExtResource("2_dudaw")]
+z_index = -1
 position = Vector2(370, -247)
 rotation = -1.71042
 
 [node name="Fallen Tree4" parent="." instance=ExtResource("2_dudaw")]
+z_index = -1
 position = Vector2(-235, -242)
 rotation = -5.21155
 

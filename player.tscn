@@ -1,13 +1,15 @@
-[gd_scene load_steps=23 format=3 uid="uid://dky68bmkhriig"]
+[gd_scene load_steps=26 format=3 uid="uid://dky68bmkhriig"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_oa4ou"]
 [ext_resource type="Texture2D" uid="uid://cospybca1rg3m" path="res://icon.svg" id="1_v7pci"]
 [ext_resource type="PackedScene" uid="uid://cxk4pd3p18hht" path="res://sound_wave.tscn" id="2_2b214"]
 [ext_resource type="Texture2D" uid="uid://danwn8322jx4x" path="res://RealArtAssets/idle.png" id="4_b35kv"]
 [ext_resource type="Texture2D" uid="uid://de48vsxrf5ik1" path="res://RealArtAssets/run.png" id="5_dr4c6"]
+[ext_resource type="PackedScene" uid="uid://04cxlcpteuu6" path="res://blackout.tscn" id="6_bybos"]
+[ext_resource type="Shader" path="res://shaders/blackout.gdshader" id="7_6byx3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t1m4y"]
-size = Vector2(115, 113)
+size = Vector2(76, 89.3333)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sjx53"]
 atlas = ExtResource("4_b35kv")
@@ -127,21 +129,23 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_me1wp"]
+shader = ExtResource("7_6byx3")
+shader_parameter/player_pos = null
+shader_parameter/light_radius = null
+shader_parameter/screen_size = null
+
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_oa4ou")
 wave_scene = ExtResource("2_2b214")
-
-[node name="Node2D" parent="." instance=ExtResource("2_2b214")]
-visible = false
-position = Vector2(-1.33333, 1.33333)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("1_v7pci")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -0.5)
+position = Vector2(4.66667, 6)
 shape = SubResource("RectangleShape2D_t1m4y")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -152,3 +156,16 @@ scale = Vector2(7.10191, 7.10191)
 sprite_frames = SubResource("SpriteFrames_f3pao")
 animation = &"idle"
 speed_scale = 2.0
+
+[node name="Blackout" parent="." instance=ExtResource("6_bybos")]
+material = SubResource("ShaderMaterial_me1wp")
+offset_left = -1280.0
+offset_top = -720.0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
+
+[node name="Wave" parent="." instance=ExtResource("2_2b214")]
+visible = false
+z_index = 2
+position = Vector2(-1.33333, 1.33333)
