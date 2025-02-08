@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmufj12vdddbc"]
+
+[ext_resource type="Texture2D" uid="uid://de48vsxrf5ik1" path="res://RealArtAssets/run.png" id="1_4hwba"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4pw4"]
+atlas = ExtResource("1_4hwba")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hj48v"]
+atlas = ExtResource("1_4hwba")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uok33"]
+atlas = ExtResource("1_4hwba")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilw4c"]
+atlas = ExtResource("1_4hwba")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjwab"]
+atlas = ExtResource("1_4hwba")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nrtqe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4pw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hj48v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uok33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilw4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjwab")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Player" type="Area2D"]
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.9987, 1)
+sprite_frames = SubResource("SpriteFrames_nrtqe")
+animation = &"run"
+frame_progress = 0.639909
+speed_scale = 2.0

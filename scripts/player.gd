@@ -9,13 +9,20 @@ var screen_size
 func _ready():
 	screen_size = get_viewport_rect().size
 
+@onready var anim_sprite = $AnimatedSprite2D  # Reference to the AnimatedSprite2D node
+
 func _process(delta: float):
 	# set animation
 	if velocity.length() > 0:
-		pass
+		anim_sprite.play("run")
 	else:
-		pass
+		anim_sprite.play("idle")
 
+	if velocity.x > 0:  # Moving right
+		anim_sprite.flip_h = false
+	elif velocity.x < 0:  # Moving left
+		anim_sprite.flip_h = true
+		
 const mu = 0.2
 const THRESHHOLD = 7
 const ONE_OVER_ROOT_TWO = 0.70710678118
@@ -83,6 +90,3 @@ func process_movement(delta):
 	
 	# update position with collision
 	move_and_slide()
-
-
-
