@@ -8,7 +8,6 @@ var radius = 5
 @export var start_radius: float = 5.0  # Initial radius of the circle
 @export var segments: int = 512  # Number of points in the circle
 
-
 var points: Array
 var velocities: Array
 
@@ -25,13 +24,30 @@ func create_wave():
 		velocities.append(direction * wave_speed)
 	
 	update_wave()
+	
+@onready var line = $Line2D
+func _draw():
+	
+	var c = Color.WHITE
+	c.a = 0.3
+
+	draw_polygon(line.points, [c])
+
 
 func update_wave():
-	var line = $Line2D
 	line.clear_points()
+
+	
 	
 	for p in points:
 		line.add_point(p)
+	
+	queue_redraw()
+signal object_detected
+
+@onready var collision_polygon_2d = $Area2D/CollisionPolygon2D
+
+var badger_hit = false
 
 func process_wave(delta, rad):
 	
@@ -52,14 +68,35 @@ func process_wave(delta, rad):
 		if result:
 			# Bounce the point if it hits something
 			#var normal = result.normal
-			
+
 			# Bounce
 			#velocities[i] = velocities[i].bounce(normal)
 			
 			# Wrap around
 			velocities[i] = Vector2.ZERO
+			points[i] = result.position
+			
+			if result.collider and result.collider.has_method("_on_object_detected_badger") and not badger_hit:  # Check if the object has a certain method
+				print("signal emitted")
+				event_bus.emit_signal("badger_detected",global_position)
+				badger_hit = true
 		
 		points[i] = new_pos  # Update position
+		
+		
+		# check for badger collision
+		#var params = PhysicsPointQueryParameters2D.new()
+		#params.position = points[i] + global_position
+		#params.collide_with_bodies = true
+		#params.collide_with_areas = true
+		#
+		#var results = space_state.intersect_point(params)
+		#for res in results:
+			#var obj = res.collider
+			#print(obj)
+			
+				#emit_signal("object_detected")  # Trigger a signal with the object
+		
 	update_wave()
 	
 	

@@ -8,6 +8,10 @@ var state : String = "patrol"
 
 @onready var pathfollow = get_parent()
 
+func _ready() -> void:
+	event_bus.badger_detected.connect(_on_object_detected_badger)
+
+
 func patrol(delta):
 	if patrol_type == "loop":
 		pathfollow.progress += speed * delta
@@ -16,3 +20,6 @@ func patrol(delta):
 func _physics_process(delta: float) -> void:
 	if state == "patrol":
 		patrol(delta)
+
+func _on_object_detected_badger(sound_position):
+	print("signal recieved from position",sound_position)
