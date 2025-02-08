@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://diu0ttrbt7elw"]
+[gd_scene load_steps=8 format=3 uid="uid://diu0ttrbt7elw"]
 
-[ext_resource type="PackedScene" uid="uid://261jv3nvbic3" path="res://real_tile_map.tscn" id="1_ka215"]
+[ext_resource type="PackedScene" uid="uid://cu8n2gudtbpw0" path="res://real_tile_map.tscn" id="1_ka215"]
 [ext_resource type="PackedScene" uid="uid://dky68bmkhriig" path="res://player.tscn" id="1_nfi0n"]
 [ext_resource type="PackedScene" uid="uid://b41vwujrqjvtn" path="res://ObstacleObjects/log1.tscn" id="4_6gmd4"]
 [ext_resource type="PackedScene" uid="uid://cusswafy60ou1" path="res://ObstacleObjects/log2.tscn" id="5_ylc3q"]
@@ -11,6 +11,7 @@
 [node name="Node" type="Node"]
 
 [node name="RealTileMap" parent="." instance=ExtResource("1_ka215")]
+z_index = -2
 position = Vector2(-33, 108)
 scale = Vector2(5, 5)
 rendering_quadrant_size = 15
@@ -21,27 +22,30 @@ scale = Vector2(0.745686, 0.75)
 motion_mode = 1
 wall_min_slide_angle = 0.677188
 
-[node name="Log" parent="." instance=ExtResource("4_6gmd4")]
+[node name="Objects" type="Node2D" parent="."]
+z_index = -1
+
+[node name="Log" parent="Objects" instance=ExtResource("4_6gmd4")]
 position = Vector2(-105, 396)
 
-[node name="Log2" parent="." instance=ExtResource("5_ylc3q")]
+[node name="Log2" parent="Objects" instance=ExtResource("5_ylc3q")]
 position = Vector2(126, 321)
 rotation = -0.698132
 
-[node name="Tree" parent="." instance=ExtResource("6_l6mbu")]
+[node name="Tree" parent="Objects" instance=ExtResource("6_l6mbu")]
 position = Vector2(-398, 406)
 
-[node name="Rock" parent="." instance=ExtResource("7_al3rd")]
+[node name="Rock" parent="Objects" instance=ExtResource("7_al3rd")]
 position = Vector2(-330, 162)
 
-[node name="Rock2" parent="." instance=ExtResource("8_m2shj")]
+[node name="Rock2" parent="Objects" instance=ExtResource("8_m2shj")]
 position = Vector2(-401, 253)
 
-[node name="Log3" parent="." instance=ExtResource("4_6gmd4")]
+[node name="Log3" parent="Objects" instance=ExtResource("4_6gmd4")]
 position = Vector2(493, -167)
 
-[node name="Log4" parent="." instance=ExtResource("7_al3rd")]
+[node name="Log4" parent="Objects" instance=ExtResource("7_al3rd")]
 position = Vector2(188, -249)
 
-[node name="Log5" parent="." instance=ExtResource("6_l6mbu")]
+[node name="Log5" parent="Objects" instance=ExtResource("6_l6mbu")]
 position = Vector2(88, -225)

@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_oa4ou"]
 [ext_resource type="Texture2D" uid="uid://cospybca1rg3m" path="res://icon.svg" id="1_v7pci"]
 [ext_resource type="PackedScene" uid="uid://cxk4pd3p18hht" path="res://sound_wave.tscn" id="2_2b214"]
-[ext_resource type="Texture2D" uid="uid://danwn8322jx4x" path="res://RealArtAssets/idle.png" id="4_b35kv"]
-[ext_resource type="Texture2D" uid="uid://de48vsxrf5ik1" path="res://RealArtAssets/run.png" id="5_dr4c6"]
+[ext_resource type="Texture2D" uid="uid://danwn8322jx4x" path="res://RealArtAssets/Animations/idle.png" id="4_b35kv"]
+[ext_resource type="Texture2D" uid="uid://de48vsxrf5ik1" path="res://RealArtAssets/Animations/run.png" id="5_dr4c6"]
 [ext_resource type="PackedScene" uid="uid://04cxlcpteuu6" path="res://blackout.tscn" id="6_bybos"]
 [ext_resource type="Shader" path="res://shaders/blackout.gdshader" id="7_6byx3"]
 
@@ -145,8 +145,8 @@ visible = false
 texture = ExtResource("1_v7pci")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -0.5)
-shape = SubResource("CapsuleShape2D_amc0a")
+position = Vector2(4.66667, 6)
+shape = SubResource("RectangleShape2D_t1m4y")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -155,7 +155,6 @@ position = Vector2(3.8147e-06, 2.66667)
 scale = Vector2(7.10191, 7.10191)
 sprite_frames = SubResource("SpriteFrames_f3pao")
 animation = &"idle"
-frame_progress = 0.473174
 speed_scale = 2.0
 
 [node name="Blackout" parent="." instance=ExtResource("6_bybos")]
