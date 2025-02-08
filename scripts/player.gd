@@ -32,7 +32,9 @@ func _process(_delta: float):
 		if mat is ShaderMaterial:
 			var centre_pos = get_viewport().get_camera_2d().get_screen_center_position() - (screen_size / 2)
 			mat.set_shader_parameter("player_pos", global_position - centre_pos)
-			mat.set_shader_parameter("light_radius", 120.0) # Adjust radius
+
+			mat.set_shader_parameter("light_radius", 80.0) # Adjust radius
+
 			mat.set_shader_parameter("screen_size", get_viewport_rect().size) # Pass screen size
 		
 const mu = 0.2
