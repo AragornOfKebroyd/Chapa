@@ -7,7 +7,6 @@ signal hit
 var screen_size
 
 # blackout screen
-#@onready var blackout_rect = get_parent().get_node("Blackout")
 @onready var blackout_rect = $Blackout
 
 func _ready():
@@ -89,7 +88,6 @@ func process_movement(delta):
 	# ma = Fres
 	var resistance = -sign(velocity) * mu * velocity * velocity
 	var acceleration = force + resistance
-	#print("force: ", force, "\nresistance", resistance, "\nacceleration: ", acceleration,"\nvelocity: ",velocity)
 	
 	#if sign(velocity + acceleration * delta) == sign(velocity) or velocity == Vector2.ZERO:
 	velocity += acceleration * delta

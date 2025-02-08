@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://bjxks44ba8fvs"]
-
-[node name="bush" type="StaticBody2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, 22.75)
-scale = Vector2(-1, 46.5)
