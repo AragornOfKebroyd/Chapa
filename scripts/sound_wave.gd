@@ -6,7 +6,7 @@ var radius = 5
 # Called when the node enters the scene tree for the first time.
 
 @export var start_radius: float = 50.0  # Initial radius of the circle
-@export var segments: int = 256  # Number of points in the circle
+@export var segments: int = 512  # Number of points in the circle
 
 
 var points: Array
@@ -33,7 +33,14 @@ func update_wave():
 	for p in points:
 		line.add_point(p)
 
-func process_wave(delta):
+func process_wave(delta, radius):
+	
+	var perc_dist = radius / max_radius
+	
+	opacity = 1 * (1-perc_dist)**2
+	
+	modulate.a = opacity
+	
 	for i in range(segments+1):
 		var new_pos = points[i] + velocities[i] * delta
 		
@@ -45,7 +52,12 @@ func process_wave(delta):
 		if result:
 			# Bounce the point if it hits something
 			var normal = result.normal
-			velocities[i] = velocities[i].bounce(normal)
+			
+			# Bounce
+			#velocities[i] = velocities[i].bounce(normal)
+			
+			# Wrap around
+			velocities[i] = Vector2.ZERO
 		
 		points[i] = new_pos  # Update position
 	update_wave()
@@ -72,7 +84,7 @@ func draw_wave(r):
 		line.add_point(point)
 
 func _ready():
-	#create_wave()
+	create_wave()
 	pass
 
 
@@ -83,10 +95,10 @@ func _process(delta):
 var opacity = 1
 func _physics_process(delta):
 	radius += wave_speed * delta
-	draw_wave(radius)
-	$Area2D/CollisionShape2D.shape.radius = radius
+	#draw_wave(radius)
+	#$Area2D/CollisionShape2D.shape.radius = radius
 	
-	#process_wave(delta)
+	process_wave(delta, radius)
 	
 	if radius > max_radius:
 		queue_free()

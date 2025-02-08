@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://04cxlcpteuu6"]
+
+[node name="Blackout" type="ColorRect"]
+custom_minimum_size = Vector2(1920, 1080)
+color = Color(0.0687983, 0.0687983, 0.0687983, 1)
