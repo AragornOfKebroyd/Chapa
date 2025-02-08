@@ -3,14 +3,6 @@
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_oa4ou"]
 [ext_resource type="Texture2D" uid="uid://cospybca1rg3m" path="res://icon.svg" id="1_v7pci"]
 [ext_resource type="PackedScene" uid="uid://cxk4pd3p18hht" path="res://sound_wave.tscn" id="2_2b214"]
-<<<<<<< HEAD
-[ext_resource type="Texture2D" uid="uid://danwn8322jx4x" path="res://RealArtAssets/Animations/idle.png" id="4_b35kv"]
-[ext_resource type="Texture2D" uid="uid://de48vsxrf5ik1" path="res://RealArtAssets/Animations/run.png" id="5_dr4c6"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_amc0a"]
-radius = 28.8333
-height = 94.3333
-=======
 [ext_resource type="Texture2D" uid="uid://danwn8322jx4x" path="res://RealArtAssets/idle.png" id="4_b35kv"]
 [ext_resource type="Texture2D" uid="uid://de48vsxrf5ik1" path="res://RealArtAssets/run.png" id="5_dr4c6"]
 [ext_resource type="PackedScene" uid="uid://04cxlcpteuu6" path="res://blackout.tscn" id="6_bybos"]
@@ -18,7 +10,6 @@ height = 94.3333
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t1m4y"]
 size = Vector2(76, 89.3333)
->>>>>>> 3fc8645977d820cc869872beb677d4092a0ff48f
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sjx53"]
 atlas = ExtResource("4_b35kv")

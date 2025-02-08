@@ -1,16 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://cc2s03gf2j5og"]
 
-<<<<<<< HEAD:old_tile_map.tscn
 [ext_resource type="Texture2D" uid="uid://c67m6l3lnkmjq" path="res://assets/Harvest Sumer Free Ver. Pack/tilesets/Set 1.0.png" id="1_j3rnj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dno7g"]
 texture = ExtResource("1_j3rnj")
-=======
-[ext_resource type="Texture2D" uid="uid://cebavfkxohf3n" path="res://RealArtAssets/real_tileset.png" id="1_6cfm2"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_thd5y"]
-texture = ExtResource("1_6cfm2")
->>>>>>> 3fc8645977d820cc869872beb677d4092a0ff48f:tile_map.tscn
 1:1/0 = 0
 2:1/0 = 0
 3:1/0 = 0
