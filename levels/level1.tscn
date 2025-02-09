@@ -11,8 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://dxutpspyb6krb" path="res://ObstacleObjects/rock2.tscn" id="8_m2shj"]
 [ext_resource type="PackedScene" path="res://playerStartPos.tscn" id="9_j1qbw"]
 [ext_resource type="PackedScene" uid="uid://cjivx4bga8qts" path="res://badger.tscn" id="9_ubq7o"]
-[ext_resource type="AudioStream" uid="uid://bn4262tspuaq7" path="res://music/lvl1intro.mp3" id="11_sqy5k"]
-[ext_resource type="AudioStream" uid="uid://bbfs4m271785m" path="res://music/lvl1loop.mp3" id="12_lwjxl"]
+[ext_resource type="AudioStream" uid="uid://bn4262tspuaq7" path="res://music/Project chipi 1st level (with intro).mp3" id="11_sqy5k"]
+[ext_resource type="AudioStream" uid="uid://bbfs4m271785m" path="res://music/Project chipi 1st level (without intro).mp3" id="12_lwjxl"]
 
 [sub_resource type="Curve2D" id="Curve2D_ybt41"]
 _data = {
@@ -74,7 +74,6 @@ position = Vector2(88, -225)
 position = Vector2(783, -161)
 
 [node name="Bush1" parent="Objects" instance=ExtResource("8_37ele")]
-z_index = -1
 position = Vector2(-69, 62)
 
 [node name="Bush2" parent="Objects" instance=ExtResource("8_37ele")]

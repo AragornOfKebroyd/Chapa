@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmel66cco2owb"]
+[gd_scene load_steps=4 format=3 uid="uid://b4tjs2kxuo787"]
 
 [ext_resource type="Texture2D" uid="uid://dcebmh2lqjacj" path="res://RealArtAssets/Obstacles/bush2.png" id="1_flko2"]
 [ext_resource type="Script" path="res://scripts/bush.gd" id="2_ragg4"]
