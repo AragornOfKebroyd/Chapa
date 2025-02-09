@@ -14,6 +14,8 @@ func _ready():
 
 @onready var anim_sprite = $AnimatedSprite2D  # Reference to the AnimatedSprite2D node
 
+var view_radius = 80.0
+
 func _process(_delta: float):
 	# set animation
 	if velocity.length() > 0:
@@ -38,7 +40,7 @@ func _process(_delta: float):
 			var centre_pos = get_viewport().get_camera_2d().get_screen_center_position() - (screen_size / 2)
 			mat.set_shader_parameter("player_pos", global_position - centre_pos)
 
-			mat.set_shader_parameter("light_radius", 80.0) # Adjust radius
+			mat.set_shader_parameter("light_radius", view_radius) # Adjust radius
 
 			mat.set_shader_parameter("screen_size", get_viewport_rect().size) # Pass screen size
 		
@@ -47,10 +49,16 @@ const THRESHHOLD = 7
 const ONE_OVER_ROOT_TWO = 0.70710678118
 var fMult = SPEED * SPEED * mu
 
+
+var expand_view = false
+
 func _physics_process(delta: float) -> void:
 	process_movement(delta)
 	
 	process_squeak()
+	
+	if expand_view:
+		view_radius += 5
 
 
 @export var wave_scene: PackedScene  # Drag the Wave scene into the inspector
@@ -69,6 +77,7 @@ func process_squeak():
 
 func process_movement(delta):
 	#velocity = Vector2.ZERO
+	if dead: return
 	var force = Vector2.ZERO
 	
 	var up_down = 0
@@ -109,6 +118,19 @@ func process_movement(delta):
 	# update position with collision
 	move_and_slide()
 
+var dead = false
 
-func _on_pink_berry_area_entered(area):
-	event_bus.start_level_two.emit()
+func show_level():
+	anim_sprite.visible = false
+	expand_view = true
+	dead = true
+
+func finish_level():
+	expand_view = true
+	dead = true # not really, just stops movement
+
+func hide_level():
+	anim_sprite.visible = true
+	view_radius = 80.0
+	expand_view = false
+	dead = false

@@ -22,9 +22,14 @@ var player
 func _ready() -> void:
 	nav_agent.target_desired_distance = 4.0
 	nav_agent.path_desired_distance = 4.0
-	event_bus.badger_detected.connect(_on_object_detected_badger)
+	event_bus.badger_detected.connect(_on_object_detected_badger)#
+	event_bus.freeze_badger.connect(freeze_badger)
 	event_bus.player_hidden.connect(_on_player_hidden)
-	
+
+var badger_frozen = false
+func freeze_badger(bool_val):
+	badger_frozen = bool_val
+
 func random_pause():
 	return (random_numbers[randi() % random_numbers.size()] == 1)
 
@@ -100,6 +105,16 @@ func target(delta):
 
 # Badger follows player
 func follow(delta):
+	
+	# check it can see the player
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsRayQueryParameters2D.create(global_position, player.global_position)
+	var result = space_state.intersect_ray(query)
+	if result:
+		nav_agent.target_position = start_position
+		state = "return"
+		wait(1.0)
+	
 	if player_hiding:
 		nav_agent.target_position = start_position
 		state = "return"
@@ -127,6 +142,7 @@ func return_to_path(delta):
 
 
 func _physics_process(delta: float) -> void:
+	if badger_frozen: return
 	if state == "patrol": # loop path
 		start_position = global_position
 		patrol(delta)
@@ -139,8 +155,6 @@ func _physics_process(delta: float) -> void:
 		follow(delta)
 	
 	badger_sprite_flip()
-
-
 
 func _on_object_detected_badger(sound_position, collider_id):
 	print(get_instance_id(), collider_id)

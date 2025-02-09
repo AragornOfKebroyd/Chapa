@@ -5,7 +5,7 @@
 [node name="CutsceneTwoThree" type="Node2D"]
 
 [node name="Slide1" parent="." instance=ExtResource("1_id4yb")]
+text_array = Array[String](["I can feel it, my senses are tingling, she must be close by", "It must have been those darned badgers that took her", "They’re everywhere!"])
 
 [node name="Slide2" parent="." instance=ExtResource("1_id4yb")]
-
-[node name="Slide3" parent="." instance=ExtResource("1_id4yb")]
+text_array = Array[String](["I’ve got to be super sneaky here, im almost there Chipi", "Im almost there."])
