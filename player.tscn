@@ -134,7 +134,7 @@ shader_parameter/player_pos = null
 shader_parameter/light_radius = null
 shader_parameter/screen_size = null
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_oa4ou")
 wave_scene = ExtResource("2_2b214")
@@ -153,6 +153,7 @@ animation = &"idle"
 speed_scale = 2.0
 
 [node name="Blackout" parent="." instance=ExtResource("6_bybos")]
+visible = false
 material = SubResource("ShaderMaterial_me1wp")
 offset_left = -1280.0
 offset_top = -720.0

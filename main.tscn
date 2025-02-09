@@ -29,7 +29,7 @@ position = Vector2(-33, 108)
 scale = Vector2(5, 5)
 rendering_quadrant_size = 15
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_nfi0n")]
+[node name="player" parent="." instance=ExtResource("1_nfi0n")]
 position = Vector2(-5, -10)
 scale = Vector2(0.745686, 0.75)
 motion_mode = 1
@@ -76,9 +76,10 @@ position = Vector2(299, -297)
 rotation = -0.0121945
 rotates = false
 
-[node name="badger" parent="Path2D/PathFollow2D" instance=ExtResource("9_ubq7o")]
+[node name="badger" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("player") instance=ExtResource("9_ubq7o")]
 position = Vector2(-1.97546, -2.02425)
 patrol_type = "loop"
+player = NodePath("../../../player")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_4u1ca")
