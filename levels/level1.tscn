@@ -90,6 +90,7 @@ rotation = -0.0121945
 rotates = false
 
 [node name="badger" parent="Path2D/PathFollow2D" instance=ExtResource("9_ubq7o")]
+z_index = 0
 
 [node name="Path2D2" type="Path2D" parent="."]
 position = Vector2(-1, 0)
@@ -98,6 +99,7 @@ curve = SubResource("Curve2D_uh5xy")
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
 
 [node name="badger" parent="Path2D2/PathFollow2D" instance=ExtResource("9_ubq7o")]
+z_index = 0
 position = Vector2(-292, -161)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
@@ -111,3 +113,5 @@ stream = ExtResource("11_sqy5k")
 
 [node name="LoopPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_lwjxl")
+
+[node name="BadgerPlayer" type="AudioStreamPlayer2D" parent="."]

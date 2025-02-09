@@ -103,3 +103,5 @@ stream = ExtResource("10_f7p6j")
 
 [node name="LoopPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_crts3")
+
+[node name="BadgerPlayer" type="AudioStreamPlayer2D" parent="."]

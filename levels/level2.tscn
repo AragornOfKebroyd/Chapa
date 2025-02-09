@@ -9,9 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://dxutpspyb6krb" path="res://ObstacleObjects/rock2.tscn" id="6_y12bw"]
 [ext_resource type="PackedScene" uid="uid://dy0bbtqbac4pe" path="res://playerStartPos.tscn" id="7_55e2n"]
 [ext_resource type="PackedScene" uid="uid://37rpkb3r2n74" path="res://Berries/PinkBerry.tscn" id="8_5vhst"]
-[ext_resource type="AudioStream" uid="uid://cpa1wr1yj0m57" path="res://music/lvl2intro.mp3" id="8_wuayi"]
+[ext_resource type="AudioStream" uid="uid://cpa1wr1yj0m57" path="res://music/Project chipi 2nd level (with intro).mp3" id="8_wuayi"]
 [ext_resource type="PackedScene" uid="uid://cfn6erwivdvba" path="res://ObstacleObjects/bush1.tscn" id="9_2qu12"]
-[ext_resource type="AudioStream" uid="uid://clo7ex54yof3b" path="res://music/lvl2loop.mp3" id="9_swthk"]
+[ext_resource type="AudioStream" uid="uid://clo7ex54yof3b" path="res://music/Project chipi 2nd level (without intro).mp3" id="9_swthk"]
 [ext_resource type="PackedScene" uid="uid://cjivx4bga8qts" path="res://badger.tscn" id="14_ynbmr"]
 
 [sub_resource type="Curve2D" id="Curve2D_vwkql"]
@@ -122,6 +122,7 @@ position = Vector2(-541, 517)
 rotates = false
 
 [node name="badger" parent="Objects/Path2D/PathFollow2D" instance=ExtResource("14_ynbmr")]
+z_index = 0
 
 [node name="Path2D2" type="Path2D" parent="Objects"]
 curve = SubResource("Curve2D_ma85p")
@@ -131,6 +132,7 @@ position = Vector2(221, 572)
 rotates = false
 
 [node name="badger" parent="Objects/Path2D2/PathFollow2D" instance=ExtResource("14_ynbmr")]
+z_index = 0
 
 [node name="Path2D3" type="Path2D" parent="Objects"]
 curve = SubResource("Curve2D_bv7se")
@@ -140,6 +142,7 @@ position = Vector2(7, 0)
 rotates = false
 
 [node name="badger" parent="Objects/Path2D3/PathFollow2D" instance=ExtResource("14_ynbmr")]
+z_index = 0
 position = Vector2(251, 86)
 
 [node name="PlayerStartPos" parent="." instance=ExtResource("7_55e2n")]
@@ -157,3 +160,5 @@ stream = ExtResource("9_swthk")
 visible = false
 position = Vector2(-40, 365)
 navigation_polygon = SubResource("NavigationPolygon_td77c")
+
+[node name="BadgerPlayer" type="AudioStreamPlayer2D" parent="."]
