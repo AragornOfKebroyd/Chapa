@@ -23,7 +23,8 @@ func _ready() -> void:
 	nav_agent.target_desired_distance = 4.0
 	nav_agent.path_desired_distance = 4.0
 	event_bus.badger_detected.connect(_on_object_detected_badger)
-
+	event_bus.player_hidden.connect(_on_player_hidden)
+	
 func random_pause():
 	return (random_numbers[randi() % random_numbers.size()] == 1)
 
@@ -156,6 +157,9 @@ func _on_object_detected_badger(sound_position, collider_id):
 	state = "target"
 	
 
+func _on_player_hidden(player_hidden_status):
+	player_hiding = player_hidden_status
+	print(player_hiding)
 
 
 # Badger starts following player
