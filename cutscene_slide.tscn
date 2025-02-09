@@ -30,7 +30,7 @@ stretch_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TextBox"]
 anchors_preset = -1
-anchor_top = 0.678704
+anchor_top = 0.657407
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -74,7 +74,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("3_ho0n3")
 theme_override_font_sizes/font_size = 75
-text = "Placeholder text: the quick brown dog jumped over the lazy dog boo."
+text = "Placeholder text: the quick brown dog jumped over the lazy dog boo"
 autowrap_mode = 2
 clip_text = true
 text_overrun_behavior = 2

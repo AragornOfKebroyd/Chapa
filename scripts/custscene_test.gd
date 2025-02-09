@@ -4,7 +4,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	event_bus.next_level.connect(next_level)
-	event_bus.restart_level.connect(restart_level)
+	event_bus.restart_level.connect(death)
 	do_next_cutscene()
 	
 @onready var cutscene_one_two = $Cutscene_one_two/Node2D/TextureRect
@@ -12,7 +12,7 @@ func _ready():
 @export var cutscenes: Array[PackedScene]  # Array of slide scenes
 @export var player: CharacterBody2D  # Reference to the player
 @export var levels: Array[PackedScene]  # Array of levels to load after cutscene
-
+@export var death_cutscene: PackedScene
 
 var current_cutscene_index = 0
 var current_cutscene
@@ -21,10 +21,12 @@ var current_slides
 var current_level_index = 0
 var current_level
 
+var death_cutscene_instance
 
 func do_next_cutscene():
-	if current_level: 
-		print("level deleted")
+	if is_instance_valid(current_level): 
+		print("level deleted", current_level)
+		
 		current_level.queue_free()
 	remove_child(player)
 	start_cutscene()
@@ -68,7 +70,27 @@ func end_cutscene():
 
 func next_level():
 	current_level_index += 1
+	event_bus.freeze_badger.emit(true)
+	player.finish_level()
+	get_tree().create_timer(3).timeout.connect(actual_next_level)
+
+func actual_next_level():
+	player.hide_level()
+	event_bus.freeze_badger.emit(false)
 	do_next_cutscene()
+
+func death():
+	death_cutscene_instance = death_cutscene.instantiate()
+	add_child(death_cutscene_instance)
+	player.show_level()
+	death_cutscene_instance.connect("death_cutscene_over", get_rid_of_death_cutscene)
+
+func get_rid_of_death_cutscene():
+	remove_child(death_cutscene_instance)
+	player.hide_level()
+
+	set_process_input(true)
+	restart_level()
 
 func restart_level():
 	# get start_pos

@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2te6v82w25"]
+
+[ext_resource type="Script" path="res://scripts/cutscene_death.gd" id="1_dspy5"]
+[ext_resource type="FontFile" uid="uid://cv671dealu7fv" path="res://assets/fonts/Born2bSportyV2.ttf" id="2_e2076"]
+
+[sub_resource type="Theme" id="Theme_ealsx"]
+
+[node name="CutsceneDeath" type="CanvasLayer"]
+script = ExtResource("1_dspy5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme = SubResource("Theme_ealsx")
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -465.0
+offset_top = -783.0
+offset_right = 439.0
+offset_bottom = -324.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.632225, 1.9493e-06, 3.36915e-07, 1)
+theme_override_colors/font_shadow_color = Color(0.982764, 0.367572, 0.30318, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_fonts/font = ExtResource("2_e2076")
+theme_override_font_sizes/font_size = 150
+text = "You Died...
+Don't give up!!
+Chipi needs you!"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 227
+visible_characters_behavior = 1

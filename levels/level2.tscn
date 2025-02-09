@@ -122,6 +122,7 @@ position = Vector2(-541, 517)
 rotates = false
 
 [node name="badger" parent="Objects/Path2D/PathFollow2D" instance=ExtResource("14_ynbmr")]
+z_index = 0
 
 [node name="Path2D2" type="Path2D" parent="Objects"]
 curve = SubResource("Curve2D_ma85p")
@@ -131,6 +132,7 @@ position = Vector2(221, 572)
 rotates = false
 
 [node name="badger" parent="Objects/Path2D2/PathFollow2D" instance=ExtResource("14_ynbmr")]
+z_index = 0
 
 [node name="Path2D3" type="Path2D" parent="Objects"]
 curve = SubResource("Curve2D_bv7se")
@@ -140,6 +142,7 @@ position = Vector2(7, 0)
 rotates = false
 
 [node name="badger" parent="Objects/Path2D3/PathFollow2D" instance=ExtResource("14_ynbmr")]
+z_index = 0
 position = Vector2(251, 86)
 
 [node name="PlayerStartPos" parent="." instance=ExtResource("7_55e2n")]
