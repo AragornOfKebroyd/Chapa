@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ceu6kpb6c54xg" path="res://ObstacleObjects/tree1.tscn" id="4_v8gge"]
 [ext_resource type="PackedScene" uid="uid://dcy8gbee24n3x" path="res://ObstacleObjects/rock1.tscn" id="5_pj15d"]
 [ext_resource type="PackedScene" uid="uid://dxutpspyb6krb" path="res://ObstacleObjects/rock2.tscn" id="6_y12bw"]
-[ext_resource type="PackedScene" uid="uid://dy0bbtqbac4pe" path="res://playerStartPos.tscn" id="7_55e2n"]
+[ext_resource type="PackedScene" path="res://playerStartPos.tscn" id="7_55e2n"]
 
 [node name="Level2" type="Node2D"]
 

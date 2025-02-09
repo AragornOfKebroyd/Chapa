@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cosmx0l7xx1x2"]
 
-[ext_resource type="PackedScene" uid="uid://bq1s1m7dj3t1i" path="res://cutscene_slide.tscn" id="1_em18f"]
+[ext_resource type="PackedScene" path="res://cutscene_slide.tscn" id="1_em18f"]
 [ext_resource type="Texture2D" uid="uid://conhej1daccv4" path="res://assets/cutscene_images/forest2.png" id="2_ppajm"]
 
 [node name="CutsceneStart" type="Node2D"]

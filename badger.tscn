@@ -110,6 +110,7 @@ shape = SubResource("CircleShape2D_cbfou")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 z_index = 1
+amount = 13
 speed_scale = 0.3
 emission_shape = 1
 emission_sphere_radius = 68.08
