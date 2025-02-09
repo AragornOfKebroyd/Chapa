@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://diu0ttrbt7elw"]
 
-[ext_resource type="PackedScene" path="res://real_tile_map.tscn" id="1_ka215"]
+[ext_resource type="PackedScene" uid="uid://cu8n2gudtbpw0" path="res://real_tile_map.tscn" id="1_ka215"]
 [ext_resource type="PackedScene" uid="uid://dky68bmkhriig" path="res://player.tscn" id="1_nfi0n"]
 [ext_resource type="PackedScene" uid="uid://b41vwujrqjvtn" path="res://ObstacleObjects/log1.tscn" id="4_6gmd4"]
 [ext_resource type="PackedScene" uid="uid://cusswafy60ou1" path="res://ObstacleObjects/log2.tscn" id="5_ylc3q"]

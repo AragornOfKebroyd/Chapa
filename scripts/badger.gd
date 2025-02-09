@@ -17,6 +17,8 @@ var random_numbers = range(1, 500) # Generates [1, 2, ..., n]
 @onready var nav_agent = $NavigationAgent2D
 #@onready var player = get_parent().get_parent().get_parent().get_node("player")
 
+@onready var anim_sprite = $AnimatedSprite2D  # Reference to the AnimatedSprite2D node
+
 func _ready() -> void:
 	nav_agent.target_desired_distance = 4.0
 	nav_agent.path_desired_distance = 4.0
@@ -29,13 +31,55 @@ func wait(seconds: float) -> void:
 	set_physics_process(false)
 	get_tree().create_timer(seconds).timeout.connect(func(): set_physics_process(true))
 
+var paused = false
+var patrol_direction = 1
+
+func badger_sprite_flip():
+	if velocity.length() > 0:
+		anim_sprite.play("run")
+	else:
+		anim_sprite.play("idle")
+		
+	if velocity.x > 0:  # Moving right
+		anim_sprite.flip_h = false
+	elif velocity.x < 0:  # Moving left
+		anim_sprite.flip_h = true
+		
 # badger follows predefined path
 func patrol(delta):
-	if patrol_type == "loop":
-		if random_pause():
-			wait(1.0)
-		pathfollow.progress += speed * delta
+	if paused:
+		anim_sprite.play("idle")
+		return
+	
+	anim_sprite.play("run")
+	if patrol_type == "loop":		
+		# calculate velocity from pathfollow
+		var prev_position = pathfollow.global_position  # Store previous position
+		pathfollow.progress += speed * delta * patrol_direction  # Move along path
+		var new_position = pathfollow.global_position  # Get new position
 
+		velocity = (new_position - prev_position) / delta  # Calculate velocity
+
+		# Flip animation based on velocity
+		if velocity.x > 0:
+			anim_sprite.flip_h = false
+		elif velocity.x < 0:
+			anim_sprite.flip_h = true
+			
+		# random pause
+		if randi_range(0, 1000) < 3:
+			pause_movement()
+
+func pause_movement():
+	paused = true
+	
+	# random pause time
+	var pause_time = randf_range(2.0, 4.0)
+	get_tree().create_timer(pause_time).timeout.connect(func(): 
+		paused = false
+		if randi_range(0, 2) <= 1: # after pause ended, have 50% chance to reverse direction
+			patrol_direction *= -1)
+	
 # Badger goes to squeak origin
 func target(delta):
 	# Moves back to loop when finished
@@ -43,12 +87,13 @@ func target(delta):
 		nav_agent.target_position = start_position
 		state = "return"
 		wait(2.0) # "Investigates" sound
-
+	
 	var next_point = nav_agent.get_next_path_position()
 	var direction = (next_point - global_position).normalized()
 	
 	velocity = direction * speed
 	move_and_slide()
+	badger_sprite_flip()
 
 # Badger follows player
 func follow(delta):
@@ -58,6 +103,9 @@ func follow(delta):
 	velocity = direction * speed * follow_speed_increase # badger moves slightly quicker when following
 	
 	move_and_slide()
+	badger_sprite_flip()
+	
+	
 
 
 func return_to_path(delta):
@@ -69,6 +117,8 @@ func return_to_path(delta):
 	
 	velocity = direction * speed
 	move_and_slide()
+	badger_sprite_flip()
+	
 
 
 func _physics_process(delta: float) -> void:
