@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ceu6kpb6c54xg" path="res://ObstacleObjects/tree1.tscn" id="4_v8gge"]
 [ext_resource type="PackedScene" uid="uid://dcy8gbee24n3x" path="res://ObstacleObjects/rock1.tscn" id="5_pj15d"]
 [ext_resource type="PackedScene" uid="uid://dxutpspyb6krb" path="res://ObstacleObjects/rock2.tscn" id="6_y12bw"]
-[ext_resource type="PackedScene" path="res://playerStartPos.tscn" id="7_55e2n"]
+[ext_resource type="PackedScene" uid="uid://4xtl0l0060pb" path="res://playerStartPos.tscn" id="7_55e2n"]
 [ext_resource type="PackedScene" uid="uid://37rpkb3r2n74" path="res://Berries/PinkBerry.tscn" id="8_5vhst"]
 [ext_resource type="AudioStream" uid="uid://cpa1wr1yj0m57" path="res://music/lvl2intro.mp3" id="8_wuayi"]
 [ext_resource type="PackedScene" uid="uid://cfn6erwivdvba" path="res://ObstacleObjects/bush1.tscn" id="9_2qu12"]
