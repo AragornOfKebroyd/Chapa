@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 
 var speed = 100
-var follow_speed_increase = 1.4
+var investigate_speed_increase = 1.6
+var follow_speed_increase = 2.5
 var state : String = "patrol"
 var target_position : Vector2
 var start_position : Vector2
@@ -11,8 +12,8 @@ var random_numbers = range(1, 500) # Generates [1, 2, ..., n]
 var player_hiding = false
 
 
-@export_enum("linear", "loop") var patrol_type = "linear"
-@export var player : CharacterBody2D 
+@export_enum("linear", "loop") var patrol_type = "loop"
+var player
 
 @onready var pathfollow = get_parent()
 @onready var nav_agent = $NavigationAgent2D
@@ -93,7 +94,7 @@ func target(delta):
 	var next_point = nav_agent.get_next_path_position()
 	var direction = (next_point - global_position).normalized()
 	
-	velocity = direction * speed
+	velocity = direction * speed * investigate_speed_increase
 	move_and_slide()
 
 # Badger follows player
@@ -140,7 +141,9 @@ func _physics_process(delta: float) -> void:
 
 
 
-func _on_object_detected_badger(sound_position):
+func _on_object_detected_badger(sound_position, collider_id):
+	print(get_instance_id(), collider_id)
+	if get_instance_id() != collider_id: return
 	#start_position = global_position
 	target_position = sound_position
 	nav_agent.target_position = target_position
@@ -153,8 +156,12 @@ func _on_object_detected_badger(sound_position):
 	state = "target"
 	
 
+
+
 # Badger starts following player
 func _on_view_body_entered(body: Node2D) -> void:
+	print(body)
+	player = body
 	if body.is_in_group("Player"):
 		state = "follow"
 
@@ -164,3 +171,9 @@ func _on_view_body_exited(body: Node2D) -> void:
 		nav_agent.target_position = start_position
 		state = "return"
 		wait(1.0)
+
+
+func _on_area_2d_body_entered(body):
+	# check it is the player
+	if body.has_method("process_squeak"):
+		event_bus.restart_level.emit()

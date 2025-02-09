@@ -14,4 +14,4 @@ cutscenes = Array[PackedScene]([ExtResource("2_k72d1"), ExtResource("3_10067"), 
 player = NodePath("Player")
 levels = Array[PackedScene]([ExtResource("5_k0d06"), ExtResource("6_x2fjn")])
 
-[node name="Player" parent="." instance=ExtResource("7_v7cya")]
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("7_v7cya")]

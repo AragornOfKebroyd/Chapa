@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cfw88ytwojyy5"]
+[gd_scene load_steps=12 format=3 uid="uid://cfw88ytwojyy5"]
 
 [ext_resource type="PackedScene" uid="uid://cu8n2gudtbpw0" path="res://real_tile_map.tscn" id="1_ka215"]
 [ext_resource type="PackedScene" uid="uid://b41vwujrqjvtn" path="res://ObstacleObjects/log1.tscn" id="4_6gmd4"]
@@ -21,12 +21,6 @@ vertices = PackedVector2Array(739.969, -354.961, 739.031, 17, 627.219, -121.078,
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 4, 5, 7, 8), PackedInt32Array(2, 1, 8, 7), PackedInt32Array(9, 10, 11, 12, 13), PackedInt32Array(9, 13, 14, 15, 16), PackedInt32Array(17, 18, 19, 20), PackedInt32Array(21, 17, 20, 22), PackedInt32Array(23, 21, 22, 24, 25), PackedInt32Array(8, 26, 27, 28), PackedInt32Array(29, 30, 31, 6, 8, 28), PackedInt32Array(29, 32, 25, 24, 16, 15, 30)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-585, 518, -585, 663, -287, 665, -288, 419, -244, 418, -244, 329, 5, 331, 181, 205, 196, 200, 249, 256, 282, 255, 280, 27, 749, 27, 750, -365, 229, -363, 233, -201, 141, -195, 135, -137, 35, -137, 31, -287, -420, -285, -431, 168, -431, 200, -382, 196, -371, 122, -290, 127, -283, 218, -356, 221, -356, 500), PackedVector2Array(365, -224, 615, -223, 617, -131, 365, -129)])
 source_geometry_group_name = &"navigation_polygon_source_group"
-
-[sub_resource type="Curve2D" id="Curve2D_glgj4"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -228, -97, 0, 0, 0, 0, 62, -100, 0, 0, 0, 0, 70, 216, 0, 0, 0, 0, -233, 223, 0, 0, 0, 0, -228, -97)
-}
-point_count = 5
 
 [node name="Level1" type="Node2D"]
 
@@ -77,22 +71,11 @@ position = Vector2(299, -297)
 rotation = -0.0121945
 rotates = false
 
-[node name="badger" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("player") instance=ExtResource("9_ubq7o")]
-z_index = -1
-position = Vector2(-1.97546, -2.02425)
+[node name="badger" parent="Path2D/PathFollow2D" instance=ExtResource("9_ubq7o")]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_a852u")
-
-[node name="Path2D2" type="Path2D" parent="."]
-curve = SubResource("Curve2D_glgj4")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
-position = Vector2(-228, -97)
-rotation = -0.0103445
-
-[node name="badger" parent="Path2D2/PathFollow2D" instance=ExtResource("9_ubq7o")]
 
 [node name="PlayerStartPos" parent="." instance=ExtResource("9_j1qbw")]
 position = Vector2(-529, 592)
