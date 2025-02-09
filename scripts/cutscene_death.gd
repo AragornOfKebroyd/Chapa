@@ -23,7 +23,3 @@ func _physics_process(delta):
 		alpha += 0.004
 	
 	color_rect.color = Color(0,0,0,alpha)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

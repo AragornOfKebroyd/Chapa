@@ -194,5 +194,5 @@ func _on_view_body_exited(body: Node2D) -> void:
 
 func _on_area_2d_body_entered(body):
 	# check it is the player
-	if body.has_method("process_squeak"):
+	if body.has_method("process_squeak") and false:
 		event_bus.restart_level.emit()

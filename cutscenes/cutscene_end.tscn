@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2h1g7566rg62"]
+
+[ext_resource type="PackedScene" uid="uid://bq1s1m7dj3t1i" path="res://cutscene_slide.tscn" id="1_tjfm7"]
+
+[node name="CutsceneEnd" type="Node2D"]
+
+[node name="Slide1" parent="." instance=ExtResource("1_tjfm7")]
+text_array = Array[String](["OMG There you are!!", "Chipi!!!", "You're safe"])
+
+[node name="Slide2" parent="." instance=ExtResource("1_tjfm7")]
+text_array = Array[String](["How did you get past all those badgers?", "Nevermind, at least you are safe", "Let's go home"])
