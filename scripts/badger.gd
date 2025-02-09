@@ -2,10 +2,13 @@ extends CharacterBody2D
 
 
 var speed = 100
+var follow_speed_increase = 1.4
 var state : String = "patrol"
 var target_position : Vector2
 var start_position : Vector2
 var targeting = false
+var random_numbers = range(1, 500) # Generates [1, 2, ..., n]
+
 
 @export_enum("linear", "loop") var patrol_type = "linear"
 @export var player : CharacterBody2D 
@@ -19,18 +22,27 @@ func _ready() -> void:
 	nav_agent.path_desired_distance = 4.0
 	event_bus.badger_detected.connect(_on_object_detected_badger)
 
+func random_pause():
+	return (random_numbers[randi() % random_numbers.size()] == 1)
+
+func wait(seconds: float) -> void:
+	set_physics_process(false)
+	get_tree().create_timer(seconds).timeout.connect(func(): set_physics_process(true))
+
 # badger follows predefined path
 func patrol(delta):
 	if patrol_type == "loop":
+		if random_pause():
+			wait(1.0)
 		pathfollow.progress += speed * delta
 
-# badger investigates sound
-# then moves back to loop start
+# Badger goes to squeak origin
 func target(delta):
+	# Moves back to loop when finished
 	if nav_agent.is_navigation_finished():
 		nav_agent.target_position = start_position
 		state = "return"
-		get_tree().create_timer(1.0).timeout.connect(func(): true)
+		wait(2.0) # "Investigates" sound
 
 	var next_point = nav_agent.get_next_path_position()
 	var direction = (next_point - global_position).normalized()
@@ -38,13 +50,12 @@ func target(delta):
 	velocity = direction * speed
 	move_and_slide()
 
-# badger follows player
-# then moves back to loop start
+# Badger follows player
 func follow(delta):
 	var next_point = nav_agent.get_next_path_position()
 	var direction = (next_point - global_position).normalized()
 	
-	velocity = direction * speed
+	velocity = direction * speed * follow_speed_increase # badger moves slightly quicker when following
 	
 	move_and_slide()
 
@@ -72,19 +83,24 @@ func _physics_process(delta: float) -> void:
 		nav_agent.target_position = player.global_position
 		follow(delta)
 
+
+
 func _on_object_detected_badger(sound_position):
 	#start_position = global_position
 	target_position = sound_position
 	nav_agent.target_position = target_position
 	state = "target"
+	wait(1.0)
 
+# Badger starts following player
 func _on_view_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		state = "follow"
 
-
+# Badger returns to loop
 func _on_view_body_exited(body: Node2D) -> void:
 	print(start_position)
 	if body.is_in_group("Player"):
 		nav_agent.target_position = start_position
 		state = "return"
+		wait(1.0)
