@@ -8,6 +8,7 @@ var target_position : Vector2
 var start_position : Vector2
 var targeting = false
 var random_numbers = range(1, 500) # Generates [1, 2, ..., n]
+var player_hiding = false
 
 
 @export_enum("linear", "loop") var patrol_type = "linear"
@@ -15,8 +16,6 @@ var random_numbers = range(1, 500) # Generates [1, 2, ..., n]
 
 @onready var pathfollow = get_parent()
 @onready var nav_agent = $NavigationAgent2D
-#@onready var player = get_parent().get_parent().get_parent().get_node("player")
-
 @onready var anim_sprite = $AnimatedSprite2D  # Reference to the AnimatedSprite2D node
 
 func _ready() -> void:
@@ -45,6 +44,18 @@ func badger_sprite_flip():
 	elif velocity.x < 0:  # Moving left
 		anim_sprite.flip_h = true
 		
+		
+func pause_movement():
+	paused = true
+	
+	# random pause time
+	var pause_time = randf_range(2.0, 4.0)
+	get_tree().create_timer(pause_time).timeout.connect(func(): 
+		paused = false
+		if randi_range(0, 2) <= 1: # after pause ended, have 50% chance to reverse direction
+			patrol_direction *= -1)
+
+
 # badger follows predefined path
 func patrol(delta):
 	if paused:
@@ -70,16 +81,7 @@ func patrol(delta):
 		if randi_range(0, 1000) < 3:
 			pause_movement()
 
-func pause_movement():
-	paused = true
-	
-	# random pause time
-	var pause_time = randf_range(2.0, 4.0)
-	get_tree().create_timer(pause_time).timeout.connect(func(): 
-		paused = false
-		if randi_range(0, 2) <= 1: # after pause ended, have 50% chance to reverse direction
-			patrol_direction *= -1)
-	
+
 # Badger goes to squeak origin
 func target(delta):
 	# Moves back to loop when finished
@@ -97,6 +99,11 @@ func target(delta):
 
 # Badger follows player
 func follow(delta):
+	if player_hiding:
+		nav_agent.target_position = start_position
+		state = "return"
+		wait(1.0)
+	
 	var next_point = nav_agent.get_next_path_position()
 	var direction = (next_point - global_position).normalized()
 	
@@ -104,7 +111,6 @@ func follow(delta):
 	
 	move_and_slide()
 	badger_sprite_flip()
-	
 	
 
 
@@ -149,7 +155,6 @@ func _on_view_body_entered(body: Node2D) -> void:
 
 # Badger returns to loop
 func _on_view_body_exited(body: Node2D) -> void:
-	print(start_position)
 	if body.is_in_group("Player"):
 		nav_agent.target_position = start_position
 		state = "return"

@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o40m5"]
 size = Vector2(12.8, 10.9)
 
-[node name="Log" type="StaticBody2D"]
+[node name="Rock2" type="StaticBody2D"]
 scale = Vector2(5, 5)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -14,5 +14,4 @@ texture = ExtResource("1_cf1px")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.6, 0.45)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_o40m5")
