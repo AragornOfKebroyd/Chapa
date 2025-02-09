@@ -33,11 +33,17 @@ func wait(seconds: float) -> void:
 var paused = false
 var patrol_direction = 1
 
+# sprite and particles
+@onready var particles = $CPUParticles2D
+
 func badger_sprite_flip():
 	if velocity.length() > 0:
 		anim_sprite.play("run")
+		particles.emitting = true
+
 	else:
 		anim_sprite.play("idle")
+		particles.emitting = false
 		
 	if velocity.x > 0:  # Moving right
 		anim_sprite.flip_h = false
@@ -59,10 +65,9 @@ func pause_movement():
 # badger follows predefined path
 func patrol(delta):
 	if paused:
-		anim_sprite.play("idle")
+		velocity = Vector2(0, 0)
 		return
 	
-	anim_sprite.play("run")
 	if patrol_type == "loop":		
 		# calculate velocity from pathfollow
 		var prev_position = pathfollow.global_position  # Store previous position
@@ -70,12 +75,7 @@ func patrol(delta):
 		var new_position = pathfollow.global_position  # Get new position
 
 		velocity = (new_position - prev_position) / delta  # Calculate velocity
-
-		# Flip animation based on velocity
-		if velocity.x > 0:
-			anim_sprite.flip_h = false
-		elif velocity.x < 0:
-			anim_sprite.flip_h = true
+		
 			
 		# random pause
 		if randi_range(0, 1000) < 3:
@@ -95,7 +95,6 @@ func target(delta):
 	
 	velocity = direction * speed
 	move_and_slide()
-	badger_sprite_flip()
 
 # Badger follows player
 func follow(delta):
@@ -110,7 +109,6 @@ func follow(delta):
 	velocity = direction * speed * follow_speed_increase # badger moves slightly quicker when following
 	
 	move_and_slide()
-	badger_sprite_flip()
 	
 
 
@@ -123,21 +121,22 @@ func return_to_path(delta):
 	
 	velocity = direction * speed
 	move_and_slide()
-	badger_sprite_flip()
 	
 
 
 func _physics_process(delta: float) -> void:
-	if state == "patrol":
+	if state == "patrol": # loop path
 		start_position = global_position
 		patrol(delta)
-	if state == "target":
+	if state == "target": # squeak origin
 		target(delta)
-	if state == "return":
+	if state == "return": # go back to loop path
 		return_to_path(delta)
-	if state == "follow":
+	if state == "follow": # hunt down player
 		nav_agent.target_position = player.global_position
 		follow(delta)
+	
+	badger_sprite_flip()
 
 
 
@@ -145,8 +144,14 @@ func _on_object_detected_badger(sound_position):
 	#start_position = global_position
 	target_position = sound_position
 	nav_agent.target_position = target_position
+	
+	print(state)
+	
+	if state != "follow" and state != "target":
+		wait(1.0)
+		
 	state = "target"
-	wait(1.0)
+	
 
 # Badger starts following player
 func _on_view_body_entered(body: Node2D) -> void:

@@ -153,7 +153,6 @@ animation = &"idle"
 speed_scale = 2.0
 
 [node name="Blackout" parent="." instance=ExtResource("6_bybos")]
-visible = false
 material = SubResource("ShaderMaterial_me1wp")
 offset_left = -1280.0
 offset_top = -720.0
