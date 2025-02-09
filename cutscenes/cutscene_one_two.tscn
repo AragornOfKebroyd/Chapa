@@ -5,10 +5,10 @@
 [node name="CutsceneOneTwo" type="Node2D"]
 
 [node name="Slide1" parent="." instance=ExtResource("1_asv1g")]
-text_array = Array[String](["You have lost your sister", "blah balh blah", "suoer boring", "woahhhhhhhhhhhhhhhhhhhhhhhhh"])
+text_array = Array[String](["Phew that was a close call", "Badgers are always out to get us dormice", "But that won’t stop me"])
 
 [node name="Slide2" parent="." instance=ExtResource("1_asv1g")]
-text_array = Array[String](["yapapapapappa", "ooogoaogoog", "waosodiaudu", "bazinga"])
+text_array = Array[String](["There’s only one way she chould have been taken", "There’s sure to be more badgers", "But hiding in the bushes will make sure they can’t get me"])
 
 [node name="Slide3" parent="." instance=ExtResource("1_asv1g")]
-text_array = Array[String](["eeeeeeeee", "eeeeeeeeeeeeeeeeeee", "suoer eeeeeeeeeeeeeeeeeeeeeeeeeee", "pop"])
+text_array = Array[String](["Let’s go find my sister!"])

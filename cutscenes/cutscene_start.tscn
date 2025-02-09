@@ -6,8 +6,8 @@
 [node name="CutsceneStart" type="Node2D"]
 
 [node name="Slide1" parent="." instance=ExtResource("1_em18f")]
-text_array = Array[String](["This is a super cool text box", "Isnt that super cool"])
+text_array = Array[String](["The empty bed of Chipi stares you in the face", "A cold wind blows through the burrow"])
 
 [node name="Slide2" parent="." instance=ExtResource("1_em18f")]
-text_array = Array[String](["Wait this might actually be working", "idufgudsy", "iyfdxfhioutdfhioyrsdfj"])
+text_array = Array[String](["Who could have done this?", "My sister can't fend for herself, she needs help!", "It's up to me, Chapa, I can do this..."])
 background_image = ExtResource("2_ppajm")
