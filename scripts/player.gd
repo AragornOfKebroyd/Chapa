@@ -13,6 +13,7 @@ func _ready():
 	screen_size = get_viewport_rect().size
 
 @onready var anim_sprite = $AnimatedSprite2D  # Reference to the AnimatedSprite2D node
+@onready var squeak_player = $SqueakPlayer
 
 var view_radius = 80.0
 
@@ -63,10 +64,19 @@ func _physics_process(delta: float) -> void:
 
 @export var wave_scene: PackedScene  # Drag the Wave scene into the inspector
 @export var sqeak_cooldown = 0.5
+
 var can_sqeak = true
 func process_squeak():
 	if Input.is_action_just_pressed("squeak") and can_sqeak:
 		print("squeak")
+		var min_pitch = 0.8
+		var max_pitch = 1.2
+		
+		# Generate a random pitch between min_pitch and max_pitch
+		var random_pitch = randf_range(min_pitch, max_pitch)
+		squeak_player.pitch_scale = random_pitch
+		squeak_player.play()
+		
 		var wave = wave_scene.instantiate()
 		wave.global_position = global_position
 		get_parent().add_child(wave)

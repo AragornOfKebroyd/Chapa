@@ -48,7 +48,7 @@ func start_cutscene():
 				slide.connect("slide_finished",end_cutscene)
 			i += 1
 	else:
-		end_cutscene()
+		get_tree().quit()
 
 
 func end_cutscene():
@@ -58,16 +58,18 @@ func end_cutscene():
 		print("NEXT LEVEL", next_level)
 		print("CURRENT LEVEL", current_level)
 		
+		# move player first
+		var start_pos = next_level.find_child("PlayerStartPos")
+		player.position = start_pos.global_position
+		
 		get_tree().get_root().add_child(next_level)  # Load new level
 		
 		current_level = next_level
 		
 		# add player back and teleport player to start
 		add_child(player)
-		
-		restart_level()
 
-
+# called when berry is collected
 func next_level():
 	current_level_index += 1
 	event_bus.freeze_badger.emit(true)
@@ -79,6 +81,7 @@ func actual_next_level():
 	event_bus.freeze_badger.emit(false)
 	do_next_cutscene()
 
+# called when hit by badger
 func death():
 	death_cutscene_instance = death_cutscene.instantiate()
 	add_child(death_cutscene_instance)
@@ -86,9 +89,8 @@ func death():
 	death_cutscene_instance.connect("death_cutscene_over", get_rid_of_death_cutscene)
 
 func get_rid_of_death_cutscene():
-	remove_child(death_cutscene_instance)
+	death_cutscene_instance.queue_free()
 	player.hide_level()
-
 	set_process_input(true)
 	restart_level()
 
