@@ -21,6 +21,11 @@ func _process(_delta: float):
 	else:
 		anim_sprite.play("idle")
 
+	if velocity.length() > 0:
+		anim_sprite.play("run")
+	else:
+		anim_sprite.play("idle")
+		
 	if velocity.x > 0:  # Moving right
 		anim_sprite.flip_h = false
 	elif velocity.x < 0:  # Moving left

@@ -134,7 +134,7 @@ shader_parameter/player_pos = null
 shader_parameter/light_radius = null
 shader_parameter/screen_size = null
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(0.75, 0.75)
 collision_mask = 31
 script = ExtResource("1_oa4ou")

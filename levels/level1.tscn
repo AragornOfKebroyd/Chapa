@@ -77,7 +77,8 @@ position = Vector2(299, -297)
 rotation = -0.0121945
 rotates = false
 
-[node name="badger" parent="Path2D/PathFollow2D" instance=ExtResource("9_ubq7o")]
+[node name="badger" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("player") instance=ExtResource("9_ubq7o")]
+z_index = -1
 position = Vector2(-1.97546, -2.02425)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
