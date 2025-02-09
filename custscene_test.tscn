@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhbtqkx2wyidw"]
+
+[ext_resource type="PackedScene" uid="uid://cu8n2gudtbpw0" path="res://real_tile_map.tscn" id="1_jg4fd"]
+[ext_resource type="Texture2D" uid="uid://cp3tcpyj5pme6" path="res://assets/cutscene_images/forest.png" id="2_ibcee"]
+[ext_resource type="PackedScene" uid="uid://d2v3bc5d7byus" path="res://textbox.tscn" id="3_iovas"]
+
+[node name="CustsceneTest" type="Node2D"]
+
+[node name="world2" type="Node2D" parent="."]
+visible = false
+
+[node name="RealTileMap" parent="world2" instance=ExtResource("1_jg4fd")]
+layer_0/tile_data = PackedInt32Array(-65526, 720896, 4, -131062, 655360, 7, -196598, 655360, 7, -262134, 655360, 7, -327670, 655360, 7, -393206, 655360, 7, -458742, 655360, 7, -327667, 720896, 4, -327668, 720896, 4, -262132, 720896, 4, -262133, 720896, 4, -196597, 720896, 4, -65525, 720896, 4, -65524, 720896, 4, -65523, 720896, 4, -65522, 720896, 4, -65521, 720896, 4, -131057, 720896, 4, -196593, 720896, 4, -262129, 720896, 4, -262130, 720896, 4, -262131, 720896, 4, -196595, 720896, 4, -131059, 720896, 4, -131058, 720896, 4, -196596, 720896, 4, -131060, 720896, 4, -131061, 720896, 4, -327666, 720896, 4, -196594, 720896, 4, -327665, 720896, 4, -327664, 720896, 4, -262128, 720896, 4, -196592, 720896, 4, -196591, 720896, 4, -131055, 720896, 4, -65519, 720896, 4, 17, 720896, 4, 16, 720896, 4, -65520, 720896, 4, -131056, 720896, 4, 10, 720896, 5, 11, 720896, 5, 12, 720896, 5, 13, 720896, 5, 14, 720896, 5, 15, 720896, 5, 65552, 720896, 5, 65553, 720896, 5, 65546, 720896, 6, 65547, 720896, 6, 65548, 720896, 6, 65549, 720896, 6, 65550, 720896, 6, 65551, 786432, 6, 131088, 720896, 6, 131089, 720896, 6, 131087, 851968, 8, -327669, 720896, 5, -393204, 720896, 5, -393203, 720896, 5, -393202, 720896, 5, -393201, 720896, 5, -393200, 720896, 5)
+
+[node name="cutscene_b4_world_2" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="cutscene_b4_world_2"]
+
+[node name="TextureRect" type="TextureRect" parent="cutscene_b4_world_2/Node2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ibcee")
+expand_mode = 2
+stretch_mode = 2
+
+[node name="Textbox" parent="cutscene_b4_world_2/Node2D" instance=ExtResource("3_iovas")]

@@ -103,3 +103,7 @@ func process_movement(delta):
 	
 	# update position with collision
 	move_and_slide()
+
+
+func _on_pink_berry_area_entered(area):
+	event_bus.start_level_two.emit()
