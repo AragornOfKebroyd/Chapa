@@ -1,9 +1,7 @@
 extends Node
 
-signal badger_detected(variable)
+signal badger_detected(position, badger_id)
 
-signal start_level_one
+signal next_level
 
-signal start_level_two
-
-signal start_level_three
+signal restart_level

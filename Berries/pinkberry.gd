@@ -36,3 +36,9 @@ func _fade_out():
 # Function to fade in the berry (make it visible)
 func _fade_in():
 	berry_material.set_shader_parameter("alpha", 1)  # Set alpha to 1 (visible)
+
+
+func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	if body.has_method("process_squeak"):
+		print("berry",body)
+		event_bus.next_level.emit()

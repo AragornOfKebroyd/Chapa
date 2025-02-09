@@ -7,6 +7,7 @@ size = Vector2(47.2, 15)
 
 [node name="Log" type="StaticBody2D"]
 scale = Vector2(5, 5)
+collision_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.199999, -2)

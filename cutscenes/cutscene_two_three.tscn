@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://pbljkih3bm1q"]
+
+[ext_resource type="PackedScene" uid="uid://bq1s1m7dj3t1i" path="res://cutscene_slide.tscn" id="1_id4yb"]
+
+[node name="CutsceneTwoThree" type="Node2D"]
+
+[node name="Slide1" parent="." instance=ExtResource("1_id4yb")]
+
+[node name="Slide2" parent="." instance=ExtResource("1_id4yb")]
+
+[node name="Slide3" parent="." instance=ExtResource("1_id4yb")]

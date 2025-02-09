@@ -36,18 +36,17 @@ func _draw():
 
 func update_wave():
 	line.clear_points()
-
-	
-	
 	for p in points:
 		line.add_point(p)
-	
+	# draw the inside of the wave
 	queue_redraw()
+	
 signal object_detected
 
 @onready var collision_polygon_2d = $Area2D/CollisionPolygon2D
 
-var badger_hit = false
+# make sure the wave only sends 1 signal
+var badgers_hit = []
 
 func process_wave(delta, rad):
 	
@@ -76,26 +75,13 @@ func process_wave(delta, rad):
 			velocities[i] = Vector2.ZERO
 			points[i] = result.position
 			
-			if result.collider and result.collider.has_method("_on_object_detected_badger") and not badger_hit:  # Check if the object has a certain method
+			if result.collider and result.collider.has_method("_on_object_detected_badger") and result.collider_id not in badgers_hit:  # Check if the object has a certain method
 				print("signal emitted")
-				event_bus.emit_signal("badger_detected",global_position)
-				badger_hit = true
+				event_bus.emit_signal("badger_detected",global_position, result.collider_id)
+				badgers_hit.append(result.collider_id)
 		
 		points[i] = new_pos  # Update position
 		
-		
-		# check for badger collision
-		#var params = PhysicsPointQueryParameters2D.new()
-		#params.position = points[i] + global_position
-		#params.collide_with_bodies = true
-		#params.collide_with_areas = true
-		#
-		#var results = space_state.intersect_point(params)
-		#for res in results:
-			#var obj = res.collider
-			#print(obj)
-			
-				#emit_signal("object_detected")  # Trigger a signal with the object
 		
 	update_wave()
 	
@@ -115,11 +101,3 @@ func _physics_process(delta):
 	
 	if radius > max_radius:
 		queue_free()
-	
-func _on_Area2D_area_entered(area):
-	if area.has_method("on_wave_hit"):
-		area.on_wave_hit(global_position)
-
-func _on_Area2D_body_entered(body):
-	if body.has_method("on_wave_hit"):
-		body.on_wave_hit(global_position)

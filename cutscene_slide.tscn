@@ -1,0 +1,88 @@
+[gd_scene load_steps=5 format=3 uid="uid://bq1s1m7dj3t1i"]
+
+[ext_resource type="Script" path="res://scripts/textbox_autofill.gd" id="1_egkvt"]
+[ext_resource type="Texture2D" uid="uid://cp3tcpyj5pme6" path="res://assets/cutscene_images/forest.png" id="2_s1hgb"]
+[ext_resource type="FontFile" uid="uid://cv671dealu7fv" path="res://assets/fonts/Born2bSportyV2.ttf" id="3_ho0n3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a7juh"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+
+[node name="CutsceneSlide" type="CanvasLayer"]
+script = ExtResource("1_egkvt")
+text_array = Array[String](["This is a super cool text box", "Isnt that super cool", "yeah, testing testing 1234567890", "woahhhhhhhhhhhhhhhhhhhhhhhhh"])
+background_image = ExtResource("2_s1hgb")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+stretch_mode = 2
+
+[node name="TextBox" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="TextBox"]
+anchors_preset = -1
+anchor_top = 0.678704
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="TextBox/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a7juh")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextBox/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextBox/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="StartSymbol" type="Label" parent="TextBox/MarginContainer/Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(54, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_ho0n3")
+theme_override_font_sizes/font_size = 75
+text = "*"
+
+[node name="Text" type="Label" parent="TextBox/MarginContainer/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_ho0n3")
+theme_override_font_sizes/font_size = 75
+text = "Placeholder text: the quick brown dog jumped over the lazy dog boo."
+autowrap_mode = 2
+clip_text = true
+text_overrun_behavior = 2
+
+[node name="EndSymbol" type="Label" parent="TextBox/MarginContainer/Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(53, 0)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_ho0n3")
+theme_override_font_sizes/font_size = 75
+text = "*"

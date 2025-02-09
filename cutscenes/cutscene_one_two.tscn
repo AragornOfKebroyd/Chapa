@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjdhcta44sutg"]
+
+[ext_resource type="PackedScene" uid="uid://bq1s1m7dj3t1i" path="res://cutscene_slide.tscn" id="1_asv1g"]
+
+[node name="CutsceneOneTwo" type="Node2D"]
+
+[node name="Slide1" parent="." instance=ExtResource("1_asv1g")]
+text_array = Array[String](["You have lost your sister", "blah balh blah", "suoer boring", "woahhhhhhhhhhhhhhhhhhhhhhhhh"])
+
+[node name="Slide2" parent="." instance=ExtResource("1_asv1g")]
+text_array = Array[String](["yapapapapappa", "ooogoaogoog", "waosodiaudu", "bazinga"])
+
+[node name="Slide3" parent="." instance=ExtResource("1_asv1g")]
+text_array = Array[String](["eeeeeeeee", "eeeeeeeeeeeeeeeeeee", "suoer eeeeeeeeeeeeeeeeeeeeeeeeeee", "pop"])

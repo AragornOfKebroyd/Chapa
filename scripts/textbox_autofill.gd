@@ -1,11 +1,15 @@
 extends CanvasLayer
-
-@onready var textBoxContainer = $MarginContainer
-@onready var label = $MarginContainer/Panel/MarginContainer/HBoxContainer/Text
-@onready var start_symbol = $MarginContainer/Panel/MarginContainer/HBoxContainer/StartSymbol
-@onready var end_symbol = $MarginContainer/Panel/MarginContainer/HBoxContainer/EndSymbol
+#
+@onready var textBoxContainer = $TextBox/MarginContainer
+@onready var label = $TextBox/MarginContainer/Panel/MarginContainer/HBoxContainer/Text
+@onready var start_symbol = $TextBox/MarginContainer/Panel/MarginContainer/HBoxContainer/StartSymbol
+@onready var end_symbol = $TextBox/MarginContainer/Panel/MarginContainer/HBoxContainer/EndSymbol
+@onready var bg_texture = $TextureRect
 
 const CHARACTER_READ_RATE = 0.05
+
+@export var text_array: Array[String]
+@export var background_image: Texture2D
 
 
 enum State {
@@ -17,9 +21,11 @@ enum State {
 var text_queue = []
 
 var current_state = State.READY
+var debug = false
 
 func change_state(next_state):
 	current_state = next_state
+	if !debug: return
 	match current_state:
 		State.READY:
 			print("Changing state to State.READY")
@@ -29,15 +35,24 @@ func change_state(next_state):
 			print("Changing state to State.FINISHED")
 		
 
+var start = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("Starting State is State.READY")
+	if debug: print("Starting State is State.READY")
 	hide_textbox()
-	queue_text("This is a test of the fire alarm system")
-	queue_text("And now this")
-	queue_text("Bazinga")
-	queue_text("Aint no way")
-	queue_text("Bruh")
+
+func set_image():
+	bg_texture.texture = background_image
+
+func instantiate():
+	set_image()
+	show_all_text()
+	start = true
+	
+func show_all_text():
+	for item in text_array:
+		queue_text(item)
 
 func show_text(text):
 	hide_textbox()
@@ -47,15 +62,19 @@ func queue_text(text):
 	text_queue.push_back(text)
 
 signal stop_tween
+signal slide_finished
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if !start: return
 	match current_state:
 		State.READY:
 			if !text_queue.is_empty():
 				display_text()
 			else:
 				hide_textbox()
+				emit_signal("slide_finished")
+				queue_free()
 		State.READING:
 			if Input.is_action_just_pressed("ui_accept"):
 				label.visible_ratio = 1
@@ -67,7 +86,7 @@ func _process(delta):
 				label.text = ""
 				start_symbol.text = ""
 				end_symbol.text = ""
-
+#
 func hide_textbox():
 	label.text = ""
 	start_symbol.text = ""
