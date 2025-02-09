@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cfw88ytwojyy5"]
+[gd_scene load_steps=16 format=3 uid="uid://cfw88ytwojyy5"]
 
 [ext_resource type="Script" path="res://levels/music.gd" id="1_5ob07"]
 [ext_resource type="PackedScene" uid="uid://cu8n2gudtbpw0" path="res://real_tile_map.tscn" id="1_ka215"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ceu6kpb6c54xg" path="res://ObstacleObjects/tree1.tscn" id="6_l6mbu"]
 [ext_resource type="PackedScene" uid="uid://dcy8gbee24n3x" path="res://ObstacleObjects/rock1.tscn" id="7_al3rd"]
 [ext_resource type="PackedScene" uid="uid://37rpkb3r2n74" path="res://Berries/PinkBerry.tscn" id="8_8xqwg"]
+[ext_resource type="PackedScene" uid="uid://cfn6erwivdvba" path="res://ObstacleObjects/bush1.tscn" id="8_37ele"]
 [ext_resource type="PackedScene" uid="uid://dxutpspyb6krb" path="res://ObstacleObjects/rock2.tscn" id="8_m2shj"]
 [ext_resource type="PackedScene" path="res://playerStartPos.tscn" id="9_j1qbw"]
 [ext_resource type="PackedScene" uid="uid://cjivx4bga8qts" path="res://badger.tscn" id="9_ubq7o"]
@@ -64,6 +65,12 @@ position = Vector2(88, -225)
 
 [node name="PinkBerry" parent="Objects" instance=ExtResource("8_8xqwg")]
 position = Vector2(717, -139)
+
+[node name="Bush1" parent="Objects" instance=ExtResource("8_37ele")]
+z_index = -1
+position = Vector2(-69, 62)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_ybt41")
