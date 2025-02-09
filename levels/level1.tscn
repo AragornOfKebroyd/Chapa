@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://cfw88ytwojyy5"]
 
-[ext_resource type="Script" path="res://levels/level_1.gd" id="1_5ob07"]
+[ext_resource type="Script" path="res://levels/music.gd" id="1_5ob07"]
 [ext_resource type="PackedScene" uid="uid://cu8n2gudtbpw0" path="res://real_tile_map.tscn" id="1_ka215"]
 [ext_resource type="PackedScene" uid="uid://b41vwujrqjvtn" path="res://ObstacleObjects/log1.tscn" id="4_6gmd4"]
 [ext_resource type="PackedScene" uid="uid://cusswafy60ou1" path="res://ObstacleObjects/log2.tscn" id="5_ylc3q"]
@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dxutpspyb6krb" path="res://ObstacleObjects/rock2.tscn" id="8_m2shj"]
 [ext_resource type="PackedScene" path="res://playerStartPos.tscn" id="9_j1qbw"]
 [ext_resource type="PackedScene" uid="uid://cjivx4bga8qts" path="res://badger.tscn" id="9_ubq7o"]
-[ext_resource type="AudioStream" uid="uid://bn4262tspuaq7" path="res://music/lvl1intro.mp3" id="11_sqy5k"]
-[ext_resource type="AudioStream" uid="uid://bbfs4m271785m" path="res://music/lvl1loop.mp3" id="12_lwjxl"]
+[ext_resource type="AudioStream" uid="uid://bn4262tspuaq7" path="res://music/Project chipi 1st level (with intro).mp3" id="11_sqy5k"]
+[ext_resource type="AudioStream" uid="uid://bbfs4m271785m" path="res://music/Project chipi 1st level (without intro).mp3" id="12_lwjxl"]
 
 [sub_resource type="Curve2D" id="Curve2D_ybt41"]
 _data = {
@@ -64,8 +64,6 @@ position = Vector2(88, -225)
 
 [node name="PinkBerry" parent="Objects" instance=ExtResource("8_8xqwg")]
 position = Vector2(717, -139)
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_ybt41")
