@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfw88ytwojyy5"]
+[gd_scene load_steps=15 format=3 uid="uid://cfw88ytwojyy5"]
 
+[ext_resource type="Script" path="res://levels/level_1.gd" id="1_5ob07"]
 [ext_resource type="PackedScene" uid="uid://cu8n2gudtbpw0" path="res://real_tile_map.tscn" id="1_ka215"]
 [ext_resource type="PackedScene" uid="uid://b41vwujrqjvtn" path="res://ObstacleObjects/log1.tscn" id="4_6gmd4"]
 [ext_resource type="PackedScene" uid="uid://cusswafy60ou1" path="res://ObstacleObjects/log2.tscn" id="5_ylc3q"]
@@ -7,8 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://dcy8gbee24n3x" path="res://ObstacleObjects/rock1.tscn" id="7_al3rd"]
 [ext_resource type="PackedScene" uid="uid://37rpkb3r2n74" path="res://Berries/PinkBerry.tscn" id="8_8xqwg"]
 [ext_resource type="PackedScene" uid="uid://dxutpspyb6krb" path="res://ObstacleObjects/rock2.tscn" id="8_m2shj"]
-[ext_resource type="PackedScene" uid="uid://dy0bbtqbac4pe" path="res://playerStartPos.tscn" id="9_j1qbw"]
+[ext_resource type="PackedScene" path="res://playerStartPos.tscn" id="9_j1qbw"]
 [ext_resource type="PackedScene" uid="uid://cjivx4bga8qts" path="res://badger.tscn" id="9_ubq7o"]
+[ext_resource type="AudioStream" uid="uid://bn4262tspuaq7" path="res://music/lvl1intro.mp3" id="11_sqy5k"]
+[ext_resource type="AudioStream" uid="uid://bbfs4m271785m" path="res://music/lvl1loop.mp3" id="12_lwjxl"]
 
 [sub_resource type="Curve2D" id="Curve2D_ybt41"]
 _data = {
@@ -23,6 +26,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-585, 518, -585, 663, -
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Level1" type="Node2D"]
+script = ExtResource("1_5ob07")
 
 [node name="RealTileMap" parent="." instance=ExtResource("1_ka215")]
 z_index = -2
@@ -79,3 +83,9 @@ navigation_polygon = SubResource("NavigationPolygon_a852u")
 
 [node name="PlayerStartPos" parent="." instance=ExtResource("9_j1qbw")]
 position = Vector2(-529, 592)
+
+[node name="IntroPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_sqy5k")
+
+[node name="LoopPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_lwjxl")
