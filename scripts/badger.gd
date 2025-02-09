@@ -153,8 +153,9 @@ func _on_object_detected_badger(sound_position, collider_id):
 	
 	if state != "follow" and state != "target":
 		wait(1.0)
-		
-	state = "target"
+	
+	if state != "follow":
+		state = "target"
 	
 
 func _on_player_hidden(player_hidden_status):

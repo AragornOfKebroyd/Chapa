@@ -1,7 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://cfw88ytwojyy5"]
+[gd_scene load_steps=17 format=3 uid="uid://cfw88ytwojyy5"]
 
 [ext_resource type="Script" path="res://levels/music.gd" id="1_5ob07"]
-[ext_resource type="PackedScene" uid="uid://cu8n2gudtbpw0" path="res://real_tile_map.tscn" id="1_ka215"]
+[ext_resource type="PackedScene" path="res://real_tile_map.tscn" id="1_ka215"]
 [ext_resource type="PackedScene" uid="uid://b41vwujrqjvtn" path="res://ObstacleObjects/log1.tscn" id="4_6gmd4"]
 [ext_resource type="PackedScene" uid="uid://cusswafy60ou1" path="res://ObstacleObjects/log2.tscn" id="5_ylc3q"]
 [ext_resource type="PackedScene" uid="uid://ceu6kpb6c54xg" path="res://ObstacleObjects/tree1.tscn" id="6_l6mbu"]
@@ -11,14 +11,20 @@
 [ext_resource type="PackedScene" uid="uid://dxutpspyb6krb" path="res://ObstacleObjects/rock2.tscn" id="8_m2shj"]
 [ext_resource type="PackedScene" path="res://playerStartPos.tscn" id="9_j1qbw"]
 [ext_resource type="PackedScene" uid="uid://cjivx4bga8qts" path="res://badger.tscn" id="9_ubq7o"]
-[ext_resource type="AudioStream" uid="uid://bn4262tspuaq7" path="res://music/Project chipi 1st level (with intro).mp3" id="11_sqy5k"]
-[ext_resource type="AudioStream" uid="uid://bbfs4m271785m" path="res://music/Project chipi 1st level (without intro).mp3" id="12_lwjxl"]
+[ext_resource type="AudioStream" uid="uid://bn4262tspuaq7" path="res://music/lvl1intro.mp3" id="11_sqy5k"]
+[ext_resource type="AudioStream" uid="uid://bbfs4m271785m" path="res://music/lvl1loop.mp3" id="12_lwjxl"]
 
 [sub_resource type="Curve2D" id="Curve2D_ybt41"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 299, -297, 0, 0, 0, 0, 709, -302, 0, 0, 0, 0, 714, -17, 0, 0, 0, 0, 304, -20, 0, 0, 0, 0, 299, -297)
 }
 point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_uh5xy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -304, -187)
+}
+point_count = 1
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_a852u"]
 vertices = PackedVector2Array(739.969, -354.961, 739.031, 17, 627.219, -121.078, 624.789, -232.961, 239.25, -353.031, 355, -234.039, 243.227, -191.648, 355, -118.922, 269.906, 17, -379.539, 111.453, -390.719, 186.672, -421, 189.141, -421, 168.242, -410.227, -275.039, 21.2578, -276.953, 25.2578, -127, -280.703, 117.563, -297.039, 654.93, -575, 653.063, -575, 527.242, -346, 509.242, -298.039, 409.227, -346, 230.594, -254, 408.219, -272.227, 227.57, -254, 318.922, 271.906, 245.289, 253.156, 245.859, 198.883, 188.5, 176.406, 195.992, 144.023, -127, 150.078, -185.57, 1.82031, 320.969)
@@ -70,6 +76,9 @@ position = Vector2(717, -139)
 z_index = -1
 position = Vector2(-69, 62)
 
+[node name="Bush2" parent="Objects" instance=ExtResource("8_37ele")]
+position = Vector2(-527, 595)
+
 [node name="PointLight2D" type="PointLight2D" parent="."]
 
 [node name="Path2D" type="Path2D" parent="."]
@@ -82,8 +91,16 @@ rotates = false
 
 [node name="badger" parent="Path2D/PathFollow2D" instance=ExtResource("9_ubq7o")]
 
+[node name="Path2D2" type="Path2D" parent="."]
+position = Vector2(-1, 0)
+curve = SubResource("Curve2D_uh5xy")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+
+[node name="badger" parent="Path2D2/PathFollow2D" instance=ExtResource("9_ubq7o")]
+position = Vector2(-292, -161)
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
 navigation_polygon = SubResource("NavigationPolygon_a852u")
 
 [node name="PlayerStartPos" parent="." instance=ExtResource("9_j1qbw")]
