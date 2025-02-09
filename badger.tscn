@@ -108,12 +108,13 @@ position = Vector2(-2, -1)
 shape = SubResource("CircleShape2D_cbfou")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 1
+speed_scale = 0.3
 emission_shape = 1
 emission_sphere_radius = 68.08
 gravity = Vector2(0, -500)
-angular_velocity_max = 334.54
-orbit_velocity_min = -0.7
-orbit_velocity_max = 0.7
+orbit_velocity_min = -0.1
+orbit_velocity_max = 0.1
 tangential_accel_max = 2.0
 angle_min = -10.0
 angle_max = 10.0
