@@ -9,6 +9,7 @@ shader_parameter/light_radius = 100.0
 shader_parameter/screen_size = null
 
 [node name="Blackout" type="ColorRect"]
+z_index = 1
 material = SubResource("ShaderMaterial_xatuu")
 custom_minimum_size = Vector2(1920, 1080)
 anchors_preset = 15
