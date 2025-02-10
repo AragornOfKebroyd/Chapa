@@ -16,7 +16,11 @@ func _ready():
 signal death_cutscene_over
 
 func death_over():
-	get_tree().create_timer(1).timeout.connect(func(): death_cutscene_over.emit())
+	get_tree().create_timer(1).timeout.connect(remove_self)
+
+func remove_self():
+	death_cutscene_over.emit()
+	queue_free()
 
 func _physics_process(delta):
 	if alpha < 0.7:

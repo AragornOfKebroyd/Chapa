@@ -17,18 +17,19 @@ func _ready():
 
 var view_radius = 80.0
 
+enum PlayerState {
+	ALIVE,
+	DEAD,
+	WON_LEVEL,
+}
+
 func _process(_delta: float):
 	# set animation
 	if velocity.length() > 0:
 		anim_sprite.play("run")
 	else:
 		anim_sprite.play("idle")
-
-	if velocity.length() > 0:
-		anim_sprite.play("run")
-	else:
-		anim_sprite.play("idle")
-		
+	
 	if velocity.x > 0:  # Moving right
 		anim_sprite.flip_h = false
 	elif velocity.x < 0:  # Moving left
@@ -52,22 +53,49 @@ var fMult = SPEED * SPEED * mu
 
 
 var expand_view = false
+var player_state
+
+func change_state(new_state):
+	# do not do anything if the state is not changing
+	if player_state == new_state: return
+	
+	player_state = new_state
+	match new_state:
+		PlayerState.ALIVE:
+			anim_sprite.visible = true
+			view_radius = 80.0
+			expand_view = false
+		PlayerState.DEAD:
+			anim_sprite.visible = false
+			expand_view = true
+		PlayerState.WON_LEVEL:
+			expand_view = true
+
+func set_dead():
+	change_state(PlayerState.DEAD)
+
+func set_won():
+	change_state(PlayerState.WON_LEVEL)
+
+func set_alive():
+	change_state(PlayerState.ALIVE)
 
 func _physics_process(delta: float) -> void:
-	process_movement(delta)
-	
-	process_squeak()
-	
-	if expand_view:
-		view_radius += 5
-
+	# we want to process the blackout screen no matter the state
+	match player_state:
+		PlayerState.DEAD, PlayerState.WON_LEVEL:
+			if expand_view:
+				view_radius += 5
+		PlayerState.ALIVE:
+			process_movement(delta)
+			process_squeak()
 
 @export var wave_scene: PackedScene  # Drag the Wave scene into the inspector
 @export var sqeak_cooldown = 0.5
 
 var can_sqeak = true
 func process_squeak():
-	if Input.is_action_just_pressed("squeak") and can_sqeak and !dead:
+	if Input.is_action_just_pressed("squeak") and can_sqeak:
 		print("squeak")
 		var min_pitch = 0.8
 		var max_pitch = 1.2
@@ -83,11 +111,9 @@ func process_squeak():
 		
 		can_sqeak = false
 		get_tree().create_timer(sqeak_cooldown).timeout.connect(func(): can_sqeak = true)
-		
+
 
 func process_movement(delta):
-	#velocity = Vector2.ZERO
-	if dead: return
 	var force = Vector2.ZERO
 	
 	var up_down = 0
@@ -127,20 +153,3 @@ func process_movement(delta):
 	
 	# update position with collision
 	move_and_slide()
-
-var dead = false
-
-func show_level():
-	anim_sprite.visible = false
-	expand_view = true
-	dead = true
-
-func finish_level():
-	expand_view = true
-	dead = true # not really, just stops movement
-
-func hide_level():
-	anim_sprite.visible = true
-	view_radius = 80.0
-	expand_view = false
-	dead = false

@@ -68,17 +68,18 @@ func end_cutscene():
 		
 		# add player back and teleport player to start
 		add_child(player)
+		player.set_alive()
 
 # called when berry is collected
 func next_level():
 	current_level_index += 1
 	event_bus.freeze_badger.emit(true)
-	player.finish_level()
+	player.set_won()
 	get_tree().create_timer(3).timeout.connect(actual_next_level)
 
 
 func actual_next_level():
-	player.hide_level()
+	player.set_alive()
 	event_bus.freeze_badger.emit(false)
 	do_next_cutscene()
 
@@ -86,12 +87,11 @@ func actual_next_level():
 func death():
 	death_cutscene_instance = death_cutscene.instantiate()
 	add_child(death_cutscene_instance)
-	player.show_level()
+	player.set_dead()
 	death_cutscene_instance.connect("death_cutscene_over", get_rid_of_death_cutscene)
 
 func get_rid_of_death_cutscene():
-	death_cutscene_instance.queue_free()
-	player.hide_level()
+	player.set_alive()
 	set_process_input(true)
 	restart_level()
 
