@@ -85,12 +85,14 @@ func actual_next_level():
 
 # called when hit by badger
 func death():
+	# add death cutscene
+	print("hit by badger")
 	death_cutscene_instance = death_cutscene.instantiate()
 	add_child(death_cutscene_instance)
+	death_cutscene_instance.connect("death_cutscene_over", death_cutscene_over)
 	player.set_dead()
-	death_cutscene_instance.connect("death_cutscene_over", get_rid_of_death_cutscene)
 
-func get_rid_of_death_cutscene():
+func death_cutscene_over():
 	player.set_alive()
 	set_process_input(true)
 	restart_level()
