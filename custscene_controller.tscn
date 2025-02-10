@@ -1,15 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://dhbtqkx2wyidw"]
+[gd_scene load_steps=11 format=3 uid="uid://w6bihx5mp1qs"]
 
 [ext_resource type="Script" path="res://scripts/custscene_test.gd" id="1_gbh8a"]
 [ext_resource type="PackedScene" uid="uid://cosmx0l7xx1x2" path="res://cutscenes/cutscene_start.tscn" id="2_k72d1"]
 [ext_resource type="PackedScene" uid="uid://bjdhcta44sutg" path="res://cutscenes/cutscene_one_two.tscn" id="3_10067"]
 [ext_resource type="PackedScene" uid="uid://pbljkih3bm1q" path="res://cutscenes/cutscene_two_three.tscn" id="4_4i2q7"]
-[ext_resource type="PackedScene" uid="uid://d2h1g7566rg62" path="res://cutscenes/cutscene_end.tscn" id="5_dpewj"]
+[ext_resource type="PackedScene" path="res://cutscenes/cutscene_end.tscn" id="5_dpewj"]
 [ext_resource type="PackedScene" uid="uid://cfw88ytwojyy5" path="res://levels/level1.tscn" id="5_k0d06"]
 [ext_resource type="PackedScene" uid="uid://detygg5lloffg" path="res://levels/level2.tscn" id="6_x2fjn"]
-[ext_resource type="PackedScene" uid="uid://c2te6v82w25" path="res://cutscenes/cutscene_death.tscn" id="7_8e17l"]
+[ext_resource type="PackedScene" path="res://cutscenes/cutscene_death.tscn" id="7_8e17l"]
 [ext_resource type="PackedScene" uid="uid://dky68bmkhriig" path="res://player.tscn" id="7_v7cya"]
-[ext_resource type="PackedScene" uid="uid://n4me1ejvldhp" path="res://levels/level3.tscn" id="8_1871n"]
+[ext_resource type="PackedScene" uid="uid://ype4p0bvwwg2" path="res://levels/level3.tscn" id="8_1871n"]
 
 [node name="CustsceneTest" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_gbh8a")
@@ -18,4 +18,4 @@ player = NodePath("Player")
 levels = Array[PackedScene]([ExtResource("5_k0d06"), ExtResource("6_x2fjn"), ExtResource("8_1871n")])
 death_cutscene = ExtResource("7_8e17l")
 
-[node name="Player" parent="." groups=["Player"] instance=ExtResource("7_v7cya")]
+[node name="Player" parent="." instance=ExtResource("7_v7cya")]

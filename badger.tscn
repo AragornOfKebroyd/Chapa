@@ -126,6 +126,8 @@ color = Color(0.0705882, 1, 0.223529, 1)
 hue_variation_min = -0.62
 hue_variation_max = 0.6
 
+[node name="BadgerPlayer" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
 [connection signal="area_entered" from="View" to="." method="_on_view_area_entered"]

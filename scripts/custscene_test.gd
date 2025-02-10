@@ -76,6 +76,7 @@ func next_level():
 	player.finish_level()
 	get_tree().create_timer(3).timeout.connect(actual_next_level)
 
+
 func actual_next_level():
 	player.hide_level()
 	event_bus.freeze_badger.emit(false)

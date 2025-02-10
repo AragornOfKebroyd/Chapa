@@ -67,7 +67,7 @@ func _physics_process(delta: float) -> void:
 
 var can_sqeak = true
 func process_squeak():
-	if Input.is_action_just_pressed("squeak") and can_sqeak:
+	if Input.is_action_just_pressed("squeak") and can_sqeak and !dead:
 		print("squeak")
 		var min_pitch = 0.8
 		var max_pitch = 1.2

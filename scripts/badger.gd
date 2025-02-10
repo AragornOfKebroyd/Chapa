@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 var speed = 100
 var investigate_speed_increase = 1.6
-var follow_speed_increase = 2.5
+var follow_speed_increase = 2
 var state : String = "patrol"
 var target_position : Vector2
 var start_position : Vector2
@@ -107,13 +107,13 @@ func target(delta):
 func follow(delta):
 	
 	# check it can see the player
-	var space_state = get_world_2d().direct_space_state
-	var query = PhysicsRayQueryParameters2D.create(global_position, player.global_position)
-	var result = space_state.intersect_ray(query)
-	if result:
-		nav_agent.target_position = start_position
-		state = "return"
-		wait(1.0)
+	#var space_state = get_world_2d().direct_space_state
+	#var query = PhysicsRayQueryParameters2D.create(global_position, player.global_position)
+	#var result = space_state.intersect_ray(query)
+	#if result:
+		#nav_agent.target_position = start_position
+		#state = "return"
+		#wait(1.0)
 	
 	if player_hiding:
 		nav_agent.target_position = start_position
