@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://cosmx0l7xx1x2" path="res://cutscenes/cutscene_start.tscn" id="2_k72d1"]
 [ext_resource type="PackedScene" uid="uid://bjdhcta44sutg" path="res://cutscenes/cutscene_one_two.tscn" id="3_10067"]
 [ext_resource type="PackedScene" uid="uid://pbljkih3bm1q" path="res://cutscenes/cutscene_two_three.tscn" id="4_4i2q7"]
-[ext_resource type="PackedScene" path="res://cutscenes/cutscene_end.tscn" id="5_dpewj"]
+[ext_resource type="PackedScene" uid="uid://d2h1g7566rg62" path="res://cutscenes/cutscene_end.tscn" id="5_dpewj"]
 [ext_resource type="PackedScene" uid="uid://cfw88ytwojyy5" path="res://levels/level1.tscn" id="5_k0d06"]
 [ext_resource type="PackedScene" uid="uid://detygg5lloffg" path="res://levels/level2.tscn" id="6_x2fjn"]
-[ext_resource type="PackedScene" path="res://cutscenes/cutscene_death.tscn" id="7_8e17l"]
+[ext_resource type="PackedScene" uid="uid://c2te6v82w25" path="res://cutscenes/cutscene_death.tscn" id="7_8e17l"]
 [ext_resource type="PackedScene" uid="uid://dky68bmkhriig" path="res://player.tscn" id="7_v7cya"]
 [ext_resource type="PackedScene" uid="uid://ype4p0bvwwg2" path="res://levels/level3.tscn" id="8_1871n"]
 

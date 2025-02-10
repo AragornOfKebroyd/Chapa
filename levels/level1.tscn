@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://cfw88ytwojyy5"]
 
 [ext_resource type="Script" path="res://levels/music.gd" id="1_5ob07"]
-[ext_resource type="PackedScene" path="res://real_tile_map.tscn" id="1_ka215"]
+[ext_resource type="PackedScene" uid="uid://cu8n2gudtbpw0" path="res://real_tile_map.tscn" id="1_ka215"]
 [ext_resource type="PackedScene" uid="uid://b41vwujrqjvtn" path="res://ObstacleObjects/log1.tscn" id="4_6gmd4"]
 [ext_resource type="PackedScene" uid="uid://cusswafy60ou1" path="res://ObstacleObjects/log2.tscn" id="5_ylc3q"]
 [ext_resource type="PackedScene" uid="uid://ceu6kpb6c54xg" path="res://ObstacleObjects/tree1.tscn" id="6_l6mbu"]

@@ -43,8 +43,6 @@ func update_wave():
 	
 signal object_detected
 
-@onready var collision_polygon_2d = $Area2D/CollisionPolygon2D
-
 # make sure the wave only sends 1 signal
 var badgers_hit = []
 

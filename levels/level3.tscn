@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://ype4p0bvwwg2"]
 
 [ext_resource type="Script" path="res://levels/music.gd" id="1_e04to"]
-[ext_resource type="PackedScene" path="res://real_tile_map.tscn" id="2_vefah"]
+[ext_resource type="PackedScene" uid="uid://cu8n2gudtbpw0" path="res://real_tile_map.tscn" id="2_vefah"]
 [ext_resource type="PackedScene" uid="uid://b41vwujrqjvtn" path="res://ObstacleObjects/log1.tscn" id="3_cny7b"]
 [ext_resource type="PackedScene" uid="uid://cusswafy60ou1" path="res://ObstacleObjects/log2.tscn" id="4_4fhl4"]
 [ext_resource type="PackedScene" uid="uid://ceu6kpb6c54xg" path="res://ObstacleObjects/tree1.tscn" id="5_174h6"]
@@ -42,6 +42,7 @@ point_count = 8
 vertices = PackedVector2Array(561.859, 703.211, 467.883, 705.211, 481.773, 655.367, 560.047, 567.563, 449.43, 687.711, 696.008, -138.148, 697.977, 214.367, 645.93, 305.461, 471.773, 319.813, -236, 198.781, -236, 162.797, 440.156, 553.648, 476.109, 493.617, 284.68, 583.172, 270.781, 464, 618.32, -265.109, -240.406, 54.8594, 77.3594, -76.5234, 139.758, 478.039, -324, 313.023, -324, 200.773, -343.359, 359, 144.008, 639.57, -313.102, 960.961, -346.203, 939.547, -574.078, 895.57, -630.188, 857.547, -633.703, 762.789, -561.281, 745.172, 184, 873.078, 151.203, 955.078, 152.57, 738, 221.727, 765.656, -159.852, -20.7578, -127.883, -86.6797, 469.93, 875.422, 386.422, 926.25, -545.391, 654.367, -426.359, 359, -473.227, 335.563, -539.648, 478.719, -531.172, 59.0703, -637.883, 2.53125, -551.422, -98.9609, -316.047, -97.0391, -278.148, -25.2188, -547.063, 193.359, -550.344, 294.898, -630.172, 250.992, -562.563, 102.547, -621.828, 555.789, -620.273, 523.063, -487.273, 227.227, 87.7109, -242.148, 180, -321.258, 454.063, -340.703, 525.688, -267.094)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 2, 1), PackedInt32Array(5, 6, 7, 8, 9, 10), PackedInt32Array(3, 2, 11, 12), PackedInt32Array(12, 11, 13, 14, 8), PackedInt32Array(15, 5, 10, 16, 17), PackedInt32Array(14, 18, 19, 20, 9, 8), PackedInt32Array(21, 19, 18, 22, 23, 24), PackedInt32Array(25, 26, 27, 28, 24), PackedInt32Array(29, 30, 23, 31, 32), PackedInt32Array(33, 34, 17), PackedInt32Array(32, 4, 1, 35, 36, 29), PackedInt32Array(22, 31, 23), PackedInt32Array(21, 24, 28, 37, 38), PackedInt32Array(39, 38, 37, 40), PackedInt32Array(41, 42, 43, 44, 45, 16), PackedInt32Array(46, 47, 48, 42, 49), PackedInt32Array(50, 51, 40, 37), PackedInt32Array(52, 39, 40, 47, 46), PackedInt32Array(41, 49, 42), PackedInt32Array(16, 45, 33), PackedInt32Array(53, 54, 55, 56, 17), PackedInt32Array(16, 33, 17), PackedInt32Array(17, 56, 15)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-350, 949, -316, 971, 158, 965, 190, 885, 388, 937, 480, 881, 478, 715, 572, 713, 570, 563, 486, 489, 482, 329, 652, 315, 708, 217, 706, -141, 624, -275, 530, -277, 458, -351, 176, -331, 78, -247, 68, -87, -134, -97, -166, -31, -272, -35, -310, -107, -556, -109, -648, -1, -640, 257, -560, 301, -550, 473, -630, 517, -632, 559, -556, 657, -570, 737, -644, 755, -640, 863, -578, 905), PackedVector2Array(-526, 69, -250, 65, -246, 163, -246, 189, -334, 191, -334, 311, -350, 349, -424, 349, -464, 329, -478, 221, -538, 187, -552, 105), PackedVector2Array(196, -169, 192, -43, 118, 5, 140, 77, 248, 241, 328, 241, 554, 239, 586, 181, 580, 97, 496, 85, 348, 101, 264, 25, 324, -57, 550, -89, 550, -197, 476, -229, 280, -213), PackedVector2Array(150, 487, 262, 475, 276, 595, 434, 565, 470, 653, 444, 679, 222, 755, 162, 731, 154, 639)])
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_e04to")
@@ -126,6 +127,8 @@ position = Vector2(-498, 636)
 [node name="PlayerStartPos" parent="." instance=ExtResource("9_4k2xn")]
 position = Vector2(-475, 1090)
 
+[node name="BadgerPlayer" type="AudioStreamPlayer2D" parent="."]
+
 [node name="IntroPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_f7p6j")
 
@@ -171,5 +174,4 @@ rotates = false
 [node name="badger" parent="Path2D4/PathFollow2D" instance=ExtResource("13_ht4r8")]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
 navigation_polygon = SubResource("NavigationPolygon_ve7ox")

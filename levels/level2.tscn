@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://detygg5lloffg"]
 
-[ext_resource type="PackedScene" path="res://real_tile_map.tscn" id="1_bj202"]
+[ext_resource type="PackedScene" uid="uid://cu8n2gudtbpw0" path="res://real_tile_map.tscn" id="1_bj202"]
 [ext_resource type="Script" path="res://levels/music.gd" id="1_lkcdp"]
 [ext_resource type="PackedScene" uid="uid://b41vwujrqjvtn" path="res://ObstacleObjects/log1.tscn" id="2_5qpvj"]
 [ext_resource type="PackedScene" uid="uid://cusswafy60ou1" path="res://ObstacleObjects/log2.tscn" id="3_u65ug"]
@@ -63,7 +63,7 @@ rotation = -6.28319
 position = Vector2(-646, 830)
 
 [node name="Tree2" parent="Objects" instance=ExtResource("4_v8gge")]
-position = Vector2(-206, -3.99999)
+position = Vector2(-206, 8)
 
 [node name="Tree3" parent="Objects" instance=ExtResource("4_v8gge")]
 position = Vector2(-131, 344)
@@ -157,7 +157,6 @@ position = Vector2(743, 232)
 stream = ExtResource("13_c62n2")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
 position = Vector2(-40, 365)
 navigation_polygon = SubResource("NavigationPolygon_td77c")
 
